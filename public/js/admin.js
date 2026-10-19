@@ -53,10 +53,13 @@ $('#form-login').addEventListener('submit', async e => {
   e.preventDefault();
   const pin = $('#admin-pin').value.trim();
   try {
-    await api('/login', { methode: 'POST', daten: { pin } });
+    const antwort = await api('/login', { methode: 'POST', daten: { pin } });
     adminSpeicher.set('adminPin', pin);
     $('#admin-pin').value = '';
-    route();
+    await route();
+    if (antwort.standardPin) {
+      meldung('Achtung: Es wird noch die Standard-PIN 112112 verwendet. Bitte in der config.json eine eigene Admin-PIN eintragen und den Server neu starten.');
+    }
   } catch (err) {
     meldung(err.message);
   }

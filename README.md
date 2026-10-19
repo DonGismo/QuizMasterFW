@@ -55,7 +55,8 @@ Ein Rechner im Gerätehaus ist der Server, der Quizleiter zeigt die Fragen am Be
 
 ### Variante A: Windows-Installer (empfohlen)
 
-1. Die MSI-Datei `QuizMasterFW-<Version>.msi` auf dem Server-Rechner doppelklicken (Administratorrechte nötig). Node.js muss **nicht** installiert sein.
+1. Die MSI-Datei `QuizMasterFW-<Version>.msi` von der [Release-Seite](https://github.com/DonGismo/QuizMasterFW/releases) herunterladen und auf dem Server-Rechner doppelklicken (Administratorrechte nötig). Node.js muss **nicht** installiert sein.
+   > **Windows-SmartScreen:** Der Installer ist nicht digital signiert. Windows zeigt deshalb beim ersten Start „Der Computer wurde durch Windows geschützt“ an. Über **Weitere Informationen → Trotzdem ausführen** geht es weiter. Wer sichergehen will, baut die MSI selbst aus dem Quellcode (siehe [Entwicklung](#entwicklung)).
 2. Zielordner wählen (Standard `C:\Program Files\QuizMaster FW`).
 3. **Windows-Firewall:** Der Installer fragt, ob Port 3000 (TCP) freigegeben werden soll – angehakt lassen. Die Freigabe gilt nur für das lokale Subnetz im Netzwerkprofil „Privat“ und wird bei der Deinstallation wieder entfernt.
 4. **QuizMaster FW** auf dem Desktop starten. Der Server läuft unsichtbar im Hintergrund, die Verwaltung öffnet sich im Browser.
@@ -81,7 +82,7 @@ Unter Windows genügt alternativ ein Doppelklick auf `start.bat`. Die Konsole ze
 
 ```
 Quizleiter (dieser Rechner): http://localhost:3000/admin.html
-Teilnehmer im WLAN:          http://192.168.2.86:3000
+Teilnehmer im WLAN:          http://192.168.178.20:3000
 ```
 
 > **Firewall:** Beim ersten Start fragt Windows, ob Node.js im Netzwerk erreichbar sein darf – für **private Netzwerke** zulassen. Ohne Freigabe von Port 3000 erreichen die Handys den Server nicht.
@@ -212,7 +213,7 @@ Zum Sichern den jeweiligen Ordner kopieren. Ein laufendes Spiel wird erst bei de
 npm install                                    # Abhängigkeiten
 npm start                                      # Server auf Port 3000
 npm test                                       # Unit-Tests (node:test)
-node --test --test-name-pattern="CSV" test/    # einzelnen Test ausführen
+node --test --test-name-pattern="CSV"          # einzelnen Test ausführen
 npm run lasttest -- --spieler 30               # Lasttest mit simulierten Teilnehmern
 npm run msi                                    # Windows-Installer bauen
 ```
@@ -239,6 +240,8 @@ Details zur Architektur stehen in [`ARCHITEKTUR.md`](ARCHITEKTUR.md).
 ## Sicherheit und Datenschutz
 
 QuizMaster FW ist für ein **vertrauenswürdiges lokales Netz** gedacht: Es gibt kein HTTPS und nur eine gemeinsame Admin-PIN. Den Server **nicht ins Internet freigeben**.
+
+Nach 10 falschen Admin-PINs wird das betreffende Gerät für 5 Minuten gesperrt, damit die PIN nicht durchprobiert werden kann. Solange noch die Standard-PIN `112112` eingestellt ist, weist die Verwaltung nach jeder Anmeldung darauf hin.
 
 Alle Daten bleiben auf dem Server-Rechner. Gespeichert werden die eingegebenen Namen, Antworten und Punkte jedes Spiels – Teilnehmende sollten wissen, dass ihre Ergebnisse für die Auswertung gespeichert werden. Ergebnisse lassen sich in der Verwaltung einzeln löschen.
 

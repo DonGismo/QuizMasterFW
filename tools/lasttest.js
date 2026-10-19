@@ -2,7 +2,7 @@
 //
 //   npm run lasttest                      startet eigenen Testserver (Port 3099, temporäre Daten)
 //   npm run lasttest -- --spieler 60      mehr Teilnehmer
-//   npm run lasttest -- --url http://192.168.2.86:3000 --pin 112112
+//   npm run lasttest -- --url http://192.168.178.20:3000 --pin 112112
 //                                         gegen einen laufenden Server (legt dort ein Ergebnis an!)
 //
 // Gemessen wird jeweils von "Ereignis ausgelöst" bis "beim Empfänger angekommen" – alle

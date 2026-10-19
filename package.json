@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "start": "node server/index.js",
-    "test": "node --test test/",
+    "test": "node --test",
     "lasttest": "node tools/lasttest.js",
     "msi": "powershell -ExecutionPolicy Bypass -File installer/build.ps1"
   },

@@ -1,4 +1,5 @@
 // Einstieg: Webserver (Express) + Echtzeit (Socket.IO) für QuizMaster FW.
+const crypto = require('crypto');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -64,7 +65,36 @@ function joinInfo(pin) {
   };
 }
 
-const checkPin = pin => String(pin || '') === String(config.adminPin);
+// ---------- Admin-PIN ----------
+
+// Schutz gegen Durchprobieren: nach MAX_FEHLVERSUCHE falschen PINs ist die Adresse SPERRE_MS lang gesperrt
+// (auch für die richtige PIN). Eine richtige Eingabe setzt den Zähler zurück.
+const STANDARD_PIN = '112112';
+const MAX_FEHLVERSUCHE = 10;
+const SPERRE_MS = 5 * 60 * 1000;
+const fehlversuche = new Map(); // Adresse → { anzahl, gesperrtBis }
+
+const pinHash = pin => crypto.createHash('sha256').update(String(pin || '')).digest();
+
+// Liefert 'ok', 'falsch' oder 'gesperrt'
+function pruefePin(pin, adresse = '') {
+  const jetzt = Date.now();
+  const eintrag = fehlversuche.get(adresse);
+  if (eintrag && eintrag.gesperrtBis > jetzt) return 'gesperrt';
+  if (crypto.timingSafeEqual(pinHash(pin), pinHash(config.adminPin))) {
+    fehlversuche.delete(adresse);
+    return 'ok';
+  }
+  // Nach Ablauf einer Sperre beginnt die Zählung von vorn
+  const anzahl = (eintrag && !eintrag.gesperrtBis ? eintrag.anzahl : 0) + 1;
+  const gesperrt = anzahl >= MAX_FEHLVERSUCHE;
+  fehlversuche.set(adresse, { anzahl, gesperrtBis: gesperrt ? jetzt + SPERRE_MS : 0 });
+  if (gesperrt) console.log(`   Achtung: ${anzahl} falsche Admin-PINs von ${adresse} – für ${SPERRE_MS / 60000} Minuten gesperrt.`);
+  return 'falsch';
+}
+
+const checkPin = (pin, adresse) => pruefePin(pin, adresse) === 'ok';
+const SPERR_TEXT = `Zu viele Fehlversuche – bitte in ${SPERRE_MS / 60000} Minuten erneut versuchen`;
 
 // ---------- Express ----------
 
@@ -87,14 +117,18 @@ app.get('/api/qr.svg', async (req, res) => {
 });
 
 app.post('/api/login', (req, res) => {
-  if (checkPin(req.body && req.body.pin)) res.json({ ok: true });
+  const ergebnis = pruefePin(req.body && req.body.pin, req.ip);
+  if (ergebnis === 'ok') res.json({ ok: true, standardPin: String(config.adminPin) === STANDARD_PIN });
+  else if (ergebnis === 'gesperrt') res.status(429).json({ fehler: SPERR_TEXT });
   else res.status(401).json({ fehler: 'Falsche PIN' });
 });
 
 // Ab hier nur mit Admin-PIN (Header x-admin-pin)
 const admin = express.Router();
 admin.use((req, res, next) => {
-  if (checkPin(req.get('x-admin-pin'))) return next();
+  const ergebnis = pruefePin(req.get('x-admin-pin'), req.ip);
+  if (ergebnis === 'ok') return next();
+  if (ergebnis === 'gesperrt') return res.status(429).json({ fehler: SPERR_TEXT });
   res.status(401).json({ fehler: 'Admin-PIN fehlt oder ist falsch' });
 });
 

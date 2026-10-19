@@ -319,7 +319,7 @@ function createGameManager(io, store, checkPin, getJoinInfo) {
 
     socket.on('host:erstellen', ({ quizId, adminPin } = {}, cb) => {
       cb = ack(cb);
-      if (!checkPin(adminPin)) return cb({ fehler: 'Falsche Admin-PIN' });
+      if (!checkPin(adminPin, socket.handshake.address)) return cb({ fehler: 'Falsche Admin-PIN' });
       const quiz = store.getQuiz(quizId);
       if (!quiz) return cb({ fehler: 'Quiz nicht gefunden' });
       if (!quiz.fragen || !quiz.fragen.length) return cb({ fehler: 'Das Quiz enthält keine Fragen' });
