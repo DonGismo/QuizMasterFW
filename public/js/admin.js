@@ -29,8 +29,9 @@ function tab(name) {
 
 async function route() {
   meldung('');
-  if (!adminPin()) { zeige('#btn-abmelden', false); return ansicht('login'); }
+  if (!adminPin()) { zeige('#btn-abmelden', false); zeige('#btn-pin', false); return ansicht('login'); }
   zeige('#btn-abmelden', true);
+  zeige('#btn-pin', true);
   const [key, wert] = location.hash.replace(/^#/, '').split('=');
   if (key === 'quiz' || key === 'neu') return oeffneEditor(wert);
   if (key === 'ergebnis') return oeffneErgebnis(wert);
@@ -57,9 +58,7 @@ $('#form-login').addEventListener('submit', async e => {
     adminSpeicher.set('adminPin', pin);
     $('#admin-pin').value = '';
     await route();
-    if (antwort.standardPin) {
-      meldung('Achtung: Es wird noch die Standard-PIN 112112 verwendet. Bitte in der config.json eine eigene Admin-PIN eintragen und den Server neu starten.');
-    }
+    if (antwort.standardPin) oeffnePinDialog(true);
   } catch (err) {
     meldung(err.message);
   }
@@ -69,6 +68,53 @@ $('#btn-abmelden').addEventListener('click', () => {
   adminSpeicher.del('adminPin');
   location.hash = '';
   route();
+});
+
+// ---------- Admin-PIN ändern ----------
+
+const pinDialog = $('#pin-dialog');
+
+function pinFehlerAnzeigen(text) {
+  $('#pin-fehler').textContent = text || '';
+  zeige('#pin-fehler', !!text);
+}
+
+function oeffnePinDialog(standardPin) {
+  $('#form-pin').reset();
+  pinFehlerAnzeigen('');
+  zeige('#pin-hinweis', !!standardPin);
+  $('#pin-abbrechen').textContent = standardPin ? 'Später' : 'Abbrechen';
+  pinDialog.showModal();
+  $('#pin-aktuell').focus();
+}
+
+$('#btn-pin').addEventListener('click', () => oeffnePinDialog(false));
+$('#pin-abbrechen').addEventListener('click', () => pinDialog.close());
+
+$('#form-pin').addEventListener('submit', async e => {
+  e.preventDefault();
+  const aktuellePin = $('#pin-aktuell').value.trim();
+  const neuePin = $('#pin-neu').value.trim();
+  if (neuePin !== $('#pin-neu2').value.trim()) return pinFehlerAnzeigen('Die beiden neuen PINs stimmen nicht überein.');
+  if (neuePin === aktuellePin) return pinFehlerAnzeigen('Die neue PIN ist dieselbe wie die bisherige.');
+  $('#pin-speichern').disabled = true;
+  try {
+    // Eigener fetch statt api(): eine falsche aktuelle PIN soll nicht abmelden
+    const res = await fetch('/api/pin', {
+      method: 'POST',
+      headers: { 'x-admin-pin': adminPin() || '', 'content-type': 'application/json' },
+      body: JSON.stringify({ aktuellePin, neuePin }),
+    });
+    const d = await res.json().catch(() => ({}));
+    if (!res.ok) return pinFehlerAnzeigen(d.fehler || 'PIN konnte nicht geändert werden (' + res.status + ')');
+    adminSpeicher.set('adminPin', neuePin);
+    pinDialog.close();
+    meldung('Admin-PIN geändert. Sie gilt ab sofort – bitte gut merken.', true);
+  } catch {
+    pinFehlerAnzeigen('Keine Verbindung zum Server.');
+  } finally {
+    $('#pin-speichern').disabled = false;
+  }
 });
 
 // ---------- Quiz-Liste ----------

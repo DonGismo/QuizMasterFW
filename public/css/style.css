@@ -617,3 +617,13 @@ main:has(> [data-ansicht="folie"]:not(.versteckt)) { max-width: 1600px; }
 
 .konfetti { position: fixed; top: -20px; width: 10px; height: 16px; z-index: 50; pointer-events: none; animation: fallen linear forwards; }
 @keyframes fallen { to { transform: translateY(110vh) rotate(720deg); } }
+
+/* Dialog: Admin-PIN ändern */
+.pin-dialog {
+  border: none; border-radius: var(--radius); padding: 24px; width: min(440px, calc(100vw - 32px));
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35); border-top: 6px solid var(--rot); color: var(--text);
+}
+.pin-dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
+.pin-dialog h2 { margin: 0 0 8px; color: var(--rot-dunkel); }
+.pin-dialog .pin-regeln { font-size: 0.85rem; margin: 10px 0 0; }
+.pin-dialog .pin-knoepfe { justify-content: flex-end; margin-top: 16px; }

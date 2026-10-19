@@ -12,9 +12,30 @@
     <span data-logo></span>
     <h1>QuizMaster FW <small>Verwaltung <span id="kopf-version"></span></small></h1>
     <div class="rechts">
+      <button class="btn hell klein versteckt" id="btn-pin">🔑 PIN ändern</button>
       <button class="btn hell klein versteckt" id="btn-abmelden">Abmelden</button>
     </div>
   </header>
+
+  <!-- Dialog: Admin-PIN ändern -->
+  <dialog class="pin-dialog" id="pin-dialog">
+    <form id="form-pin" method="dialog" autocomplete="off">
+      <h2>Admin-PIN ändern</h2>
+      <div id="pin-hinweis" class="meldung versteckt">Es wird noch die Standard-PIN <b>112112</b> verwendet. Bitte jetzt eine eigene PIN festlegen.</div>
+      <label for="pin-aktuell">Aktuelle PIN</label>
+      <input id="pin-aktuell" type="password" inputmode="numeric" autocomplete="current-password" required>
+      <label for="pin-neu">Neue PIN</label>
+      <input id="pin-neu" type="password" inputmode="numeric" autocomplete="new-password" required minlength="4" maxlength="20">
+      <label for="pin-neu2">Neue PIN wiederholen</label>
+      <input id="pin-neu2" type="password" inputmode="numeric" autocomplete="new-password" required minlength="4" maxlength="20">
+      <p class="gedimmt pin-regeln">4 bis 20 Zeichen, keine Leerzeichen. Am besten nur Ziffern – dann erscheint am Handy/Tablet die Zahlentastatur. Die neue PIN gilt sofort, auch für andere angemeldete Geräte.</p>
+      <div id="pin-fehler" class="meldung versteckt"></div>
+      <div class="zeile pin-knoepfe">
+        <button type="button" class="btn grau" id="pin-abbrechen">Abbrechen</button>
+        <button type="submit" class="btn" id="pin-speichern">PIN speichern</button>
+      </div>
+    </form>
+  </dialog>
 
   <main>
     <div id="meldung" class="meldung versteckt"></div>

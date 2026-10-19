@@ -69,7 +69,7 @@ function joinInfo(pin) {
 
 // Schutz gegen Durchprobieren: nach MAX_FEHLVERSUCHE falschen PINs ist die Adresse SPERRE_MS lang gesperrt
 // (auch für die richtige PIN). Eine richtige Eingabe setzt den Zähler zurück.
-const STANDARD_PIN = '112112';
+const { STANDARD_PIN, pinFehler, speichereConfig } = require('./einstellungen');
 const MAX_FEHLVERSUCHE = 10;
 const SPERRE_MS = 5 * 60 * 1000;
 const fehlversuche = new Map(); // Adresse → { anzahl, gesperrtBis }
@@ -130,6 +130,26 @@ admin.use((req, res, next) => {
   if (ergebnis === 'ok') return next();
   if (ergebnis === 'gesperrt') return res.status(429).json({ fehler: SPERR_TEXT });
   res.status(401).json({ fehler: 'Admin-PIN fehlt oder ist falsch' });
+});
+
+// Admin-PIN ändern: aktuelle PIN muss zusätzlich eingegeben werden (zählt bei Fehlern als Fehlversuch).
+// Falsche aktuelle PIN → 403 (nicht 401, sonst meldet die Oberfläche den Benutzer ab).
+admin.post('/pin', (req, res) => {
+  const { aktuellePin, neuePin } = req.body || {};
+  const ergebnis = pruefePin(aktuellePin, req.ip);
+  if (ergebnis === 'gesperrt') return res.status(429).json({ fehler: SPERR_TEXT });
+  if (ergebnis !== 'ok') return res.status(403).json({ fehler: 'Die aktuelle PIN ist falsch' });
+  const fehler = pinFehler(neuePin);
+  if (fehler) return res.status(400).json({ fehler });
+  if (neuePin === String(config.adminPin)) return res.status(400).json({ fehler: 'Die neue PIN ist dieselbe wie die bisherige' });
+  try {
+    speichereConfig(CONFIG_FILE, { adminPin: neuePin });
+  } catch (e) {
+    return res.status(500).json({ fehler: 'Die PIN konnte nicht gespeichert werden: ' + e.message });
+  }
+  config.adminPin = neuePin; // gilt sofort, ohne Neustart
+  console.log('   Admin-PIN wurde in der Verwaltung geändert.');
+  res.json({ ok: true });
 });
 
 function pruefeQuiz(body) {

@@ -87,7 +87,7 @@ Teilnehmer im WLAN:          http://192.168.178.20:3000
 
 > **Firewall:** Beim ersten Start fragt Windows, ob Node.js im Netzwerk erreichbar sein darf – für **private Netzwerke** zulassen. Ohne Freigabe von Port 3000 erreichen die Handys den Server nicht.
 
-**Standard-Admin-PIN:** `112112` – bitte in der [`config.json`](#einstellungen-configjson) ändern.
+**Standard-Admin-PIN:** `112112` – bitte gleich nach der ersten Anmeldung ändern: In der Verwaltung oben rechts auf **🔑 PIN ändern** (der Dialog öffnet sich bei der Standard-PIN auch von selbst). Die neue PIN gilt sofort und wird in der [`config.json`](#einstellungen-configjson) gespeichert.
 
 ---
 
@@ -184,7 +184,7 @@ Die Inhalte stammen aus Ausbildungsunterlagen und sollten vor dem Einsatz fachli
 | Feld | Bedeutung | Standard |
 |---|---|---|
 | `port` | Port des Webservers | `3000` |
-| `adminPin` | PIN für den Verwaltungsbereich – **bitte ändern** | `112112` |
+| `adminPin` | PIN für den Verwaltungsbereich (4–20 Zeichen) – **bitte ändern**, am einfachsten über **🔑 PIN ändern** in der Verwaltung | `112112` |
 | `standardZeit` | Zeitlimit pro Frage in Sekunden, wenn keins angegeben ist | `20` |
 | `titel` | Name in der Konsole | `QuizMaster FW` |
 | `basisUrl` | optional, z. B. `http://quiz.fw:3000`, falls die automatisch erkannte Adresse nicht passt | leer |
