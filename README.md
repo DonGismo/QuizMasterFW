@@ -4,7 +4,7 @@
 
 Ein Rechner im Gerätehaus ist der Server, der Quizleiter zeigt die Fragen am Beamer oder Fernseher, und alle Teilnehmenden spielen im Browser ihres Handys mit – ohne App, ohne Konto, ohne Internet, ohne Cloud. Die Ergebnisse jedes Spiels werden mit Namen gespeichert und lassen sich anschließend auswerten (z. B. als Nachweis für die jährliche Unterweisung).
 
-![Version](https://img.shields.io/badge/version-1.3.0-c8102e) ![Lizenz: MIT](https://img.shields.io/badge/Lizenz-MIT-c8102e) ![Node.js ≥ 20.15](https://img.shields.io/badge/Node.js-%E2%89%A5%2020.15-c8102e) ![Windows-Installer](https://img.shields.io/badge/Installer-Windows%20MSI-c8102e)
+![Version](https://img.shields.io/badge/version-1.4.0-c8102e) ![Lizenz: MIT](https://img.shields.io/badge/Lizenz-MIT-c8102e) ![Node.js ≥ 20.15](https://img.shields.io/badge/Node.js-%E2%89%A5%2020.15-c8102e) ![Windows-Installer](https://img.shields.io/badge/Installer-Windows%20MSI-c8102e)
 
 ---
 
@@ -64,7 +64,7 @@ Ein Rechner im Gerätehaus ist der Server, der Quizleiter zeigt die Fragen am Be
 **Symbol im Infobereich der Taskleiste** (rechts unten, ggf. unter „^“): Doppelklick öffnet die Verwaltung. Rechtsklick zeigt das Menü mit *Verwaltung öffnen*, *Teilnehmer-Adresse kopieren*, *Server-Protokoll anzeigen*, *Daten-Ordner öffnen* und **Beenden**.
 
 - Update: neue MSI einfach drüber installieren – Quizze und Einstellungen bleiben erhalten.
-- Ohne Oberfläche installieren: `msiexec /i QuizMasterFW-1.3.0.msi /qn` (mit Firewall-Freigabe) bzw. `msiexec /i QuizMasterFW-1.3.0.msi /qn FIREWALL=""` (ohne).
+- Ohne Oberfläche installieren: `msiexec /i QuizMasterFW-1.4.0.msi /qn` (mit Firewall-Freigabe) bzw. `msiexec /i QuizMasterFW-1.4.0.msi /qn FIREWALL=""` (ohne).
 - Zur Fehlersuche gibt es im Startmenü zusätzlich **„QuizMaster FW (mit Konsolenfenster)“**.
 
 ### Variante B: Aus dem Quellcode
