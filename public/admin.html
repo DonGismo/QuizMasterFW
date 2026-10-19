@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#c8102e">
+  <title>Verwaltung – QuizMaster FW</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="kopf">
+    <span data-logo></span>
+    <h1>QuizMaster FW <small>Verwaltung <span id="kopf-version"></span></small></h1>
+    <div class="rechts">
+      <button class="btn hell klein versteckt" id="btn-abmelden">Abmelden</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="meldung" class="meldung versteckt"></div>
+
+    <!-- Anmeldung -->
+    <section data-ansicht="login" class="beitreten versteckt">
+      <div class="karte">
+        <h2>Quizleiter-Anmeldung</h2>
+        <form id="form-login">
+          <label for="admin-pin">Admin-PIN</label>
+          <input id="admin-pin" type="password" inputmode="numeric" autocomplete="current-password" required>
+          <button class="btn breit" type="submit" style="margin-top:16px">Anmelden</button>
+        </form>
+        <p class="gedimmt">Teilnehmer brauchen keine Anmeldung – sie öffnen einfach die Startseite.</p>
+      </div>
+    </section>
+
+    <!-- Übersicht mit Reitern -->
+    <section data-ansicht="uebersicht" class="versteckt">
+      <nav class="tabs">
+        <button data-tab="quizze">Quizze</button>
+        <button data-tab="import">Import</button>
+        <button data-tab="ergebnisse">Auswertung</button>
+      </nav>
+
+      <div data-tabinhalt="quizze">
+        <div class="zeile" style="margin-bottom:12px">
+          <h2 style="margin:0;color:var(--rot-dunkel)">Meine Quizze</h2>
+          <button class="btn" id="btn-neues-quiz" style="margin-left:auto">+ Neues Quiz</button>
+        </div>
+        <div class="liste" id="quiz-liste"></div>
+      </div>
+
+      <div data-tabinhalt="import" class="versteckt">
+        <div class="karte">
+          <h2>Quiz importieren</h2>
+          <p><b>Quiz-Paket (.zip)</b> aus „📦 Export komplett“ – mit Info-Folien, Bildern und Videos –, oder eine CSV-Datei (z. B. aus Excel, „CSV UTF-8 (Trennzeichen-getrennt)“) bzw. JSON-Datei hochladen.
+             <a href="/vorlage-fragen.csv" download>Vorlage herunterladen</a></p>
+          <div class="dropzone" id="dropzone">Datei hierher ziehen oder <u>auswählen</u>
+            <input type="file" id="import-datei" accept=".zip,.csv,.json,.txt,application/zip,text/csv,application/json" hidden>
+          </div>
+
+          <div id="import-vorschau" class="versteckt">
+            <h3 id="import-zusammenfassung"></h3>
+            <div id="import-hinweise" class="meldung ok versteckt"></div>
+            <div id="import-fehler" class="meldung versteckt"></div>
+            <div class="tabellen-rahmen" style="max-height:340px;overflow:auto">
+              <table class="tabelle"><thead><tr><th>#</th><th>Frage</th><th>Antworten</th><th>Zeit</th><th>Info-Folie</th></tr></thead>
+                <tbody id="import-tabelle"></tbody></table>
+            </div>
+            <label for="import-ziel">Übernehmen in</label>
+            <select id="import-ziel"></select>
+            <div id="import-neu-felder">
+              <label for="import-titel">Titel des neuen Quiz</label>
+              <input id="import-titel" type="text">
+            </div>
+            <div class="zeile" style="margin-top:16px">
+              <button class="btn" id="btn-import-uebernehmen">Fehlerfreie Fragen übernehmen</button>
+              <button class="btn grau" id="btn-import-verwerfen">Verwerfen</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="karte">
+          <h2>Format</h2>
+          <p>Eine Zeile pro Frage, Trennzeichen Semikolon. Die erste Zeile ist die Kopfzeile:</p>
+          <pre>Frage;Antwort A;Antwort B;Antwort C;Antwort D;Richtig;Zeit
+Womit löscht man einen Fettbrand?;Wasser;Löschdecke;Schaum;CO2;B;20
+Ist ein C-Schlauch dünner als ein B-Schlauch?;Ja;Nein;;;A;15</pre>
+          <ul>
+            <li><b>Antwort C/D</b> dürfen leer bleiben (mindestens 2 Antworten).</li>
+            <li><b>Richtig</b>: Buchstabe A–D (oder 1–4) der richtigen Antwort.</li>
+            <li><b>Zeit</b>: Sekunden (5–120), leer = Standardzeit.</li>
+            <li>Texte mit Semikolon oder Zeilenumbruch in Anführungszeichen setzen – Excel macht das automatisch.</li>
+          </ul>
+          <p>Ein exportiertes Quiz lässt sich genauso wieder importieren – praktisch zum Austausch zwischen Wehren:</p>
+          <ul>
+            <li><b>📦 Export komplett (.zip)</b>: alles inklusive Info-Folien und deren Bildern/Videos – für die Weitergabe an andere Rechner.</li>
+            <li><b>JSON</b>: Fragen, Einstellungen und Info-Folien, aber ohne Bild-/Videodateien (fehlende Medien werden beim Import von der Folie entfernt).</li>
+            <li><b>CSV</b>: nur Fragen und Antworten, zum Bearbeiten in Excel.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div data-tabinhalt="ergebnisse" class="versteckt">
+        <h2 style="color:var(--rot-dunkel)">Vergangene Spiele</h2>
+        <div class="liste" id="ergebnis-liste"></div>
+      </div>
+    </section>
+
+    <!-- Quiz bearbeiten -->
+    <section data-ansicht="editor" class="versteckt">
+      <div class="karte">
+        <div class="zeile">
+          <button class="btn grau klein" data-zurueck>← Zurück</button>
+          <h2 style="margin:0" id="editor-ueberschrift">Quiz bearbeiten</h2>
+        </div>
+        <label for="quiz-titel">Titel</label>
+        <input id="quiz-titel" type="text" maxlength="100" placeholder="z. B. Grundausbildung Modul 1">
+        <label for="quiz-beschreibung">Beschreibung (optional)</label>
+        <input id="quiz-beschreibung" type="text" maxlength="200">
+        <label for="quiz-intervall">Punktestand (Rangliste) anzeigen</label>
+        <select id="quiz-intervall">
+          <option value="1">nach jeder Frage</option>
+          <option value="3">nach jeder 3. Frage</option>
+          <option value="5">nach jeder 5. Frage</option>
+        </select>
+        <p class="gedimmt" style="margin:6px 0 0">Die Auflösung mit der richtigen Antwort kommt immer nach jeder Frage; vor der Siegerehrung wird die Rangliste immer gezeigt.</p>
+      </div>
+      <div id="fragen-editor"></div>
+      <div class="zeile">
+        <button class="btn hell" id="btn-frage-neu">+ Frage hinzufügen</button>
+        <span style="flex:1"></span>
+        <button class="btn grau" data-zurueck>Abbrechen</button>
+        <button class="btn" id="btn-quiz-speichern">Speichern</button>
+      </div>
+    </section>
+
+    <!-- Info-Seite (Folie) einer Frage bearbeiten -->
+    <section data-ansicht="folie" class="versteckt">
+      <div class="karte">
+        <div class="zeile" style="margin-bottom:12px">
+          <button class="btn grau klein" id="fe-abbrechen">← Abbrechen</button>
+          <h2 style="margin:0" id="fe-titel">Info-Seite</h2>
+          <span style="flex:1"></span>
+          <button class="btn hell" id="fe-vorschau">▶ Vorschau</button>
+          <button class="btn" id="fe-fertig">✔ Fertig</button>
+        </div>
+        <div class="folien-werkzeuge">
+          <button class="btn hell klein" data-neu="titel">+ Titel</button>
+          <button class="btn hell klein" data-neu="text">+ Text</button>
+          <button class="btn hell klein" data-neu="hinweis">+ Hinweis</button>
+          <button class="btn hell klein" data-neu="info">+ Info-Box</button>
+          <span class="trenner"></span>
+          <button class="btn hell klein" id="fe-bild">+ Bild</button>
+          <button class="btn hell klein" id="fe-video">+ Video-Datei</button>
+          <button class="btn hell klein" id="fe-youtube">+ YouTube</button>
+          <input type="file" id="fe-datei" accept="image/png,image/jpeg,image/gif,image/webp,video/mp4,video/webm" hidden>
+          <span class="trenner"></span>
+          <label for="fe-hintergrund" style="margin:0">Hintergrund</label>
+          <select id="fe-hintergrund"></select>
+          <span class="upload-status" id="fe-upload"></span>
+        </div>
+      </div>
+      <div class="folien-editor">
+        <div>
+          <div class="folie folien-flaeche" id="fe-flaeche"></div>
+          <p class="folien-hinweis">Ziehen = verschieben · Anfasser = Größe ändern · Doppelklick auf Text = schreiben ·
+            Pfeiltasten verschieben (Shift = weiter) · Entf = löschen · Strg+D = duplizieren · Bilder und Videos können auch auf die Folie gezogen werden.</p>
+        </div>
+        <div class="karte folien-eigenschaften" id="fe-eigenschaften"></div>
+      </div>
+    </section>
+
+    <!-- Ergebnis eines Spiels -->
+    <section data-ansicht="ergebnis" class="versteckt">
+      <div class="karte">
+        <div class="zeile">
+          <button class="btn grau klein" data-zurueck="ergebnisse">← Zurück</button>
+          <h2 style="margin:0" id="erg-titel"></h2>
+          <span style="flex:1"></span>
+          <button class="btn" id="btn-erg-csv">CSV / Excel herunterladen</button>
+        </div>
+        <p class="gedimmt" id="erg-info"></p>
+      </div>
+      <div class="karte">
+        <h2>Teilnehmer</h2>
+        <div class="tabellen-rahmen"><table class="tabelle" id="erg-tabelle"></table></div>
+      </div>
+      <div class="karte">
+        <h2>Fragen – vom schwierigsten zum leichtesten</h2>
+        <div class="tabellen-rahmen"><table class="tabelle" id="erg-fragen"></table></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="fuss">QuizMaster FW <span id="app-version"></span> · läuft nur im lokalen Netzwerk</div>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/folie.js"></script>
+  <script src="/js/folieneditor.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

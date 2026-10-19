@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#c8102e">
+  <title>Quizleiter – QuizMaster FW</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="beamer">
+  <header class="kopf">
+    <span data-logo></span>
+    <h1>QuizMaster FW <small id="quiz-titel"></small></h1>
+    <div class="rechts">
+      <button class="btn hell klein" id="btn-vollbild" title="Vollbild">⛶ Vollbild</button>
+      <button class="btn hell klein" id="btn-abbrechen">Spiel beenden</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="fehler" class="meldung versteckt"></div>
+
+    <!-- Lobby -->
+    <section data-ansicht="lobby" class="versteckt">
+      <div class="lobby">
+        <div class="qr"><img id="qr" alt="QR-Code zum Beitreten"></div>
+        <div class="karte lobby-info">
+          <p class="lobby-label">QR-Code scannen oder im Feuerwehr-WLAN öffnen:</p>
+          <p class="join-url" id="basis-url"></p>
+          <div class="streifen"></div>
+          <p class="lobby-label">Spiel-PIN</p>
+          <div class="spiel-pin" id="spiel-pin"></div>
+          <div class="streifen"></div>
+          <div class="lobby-start">
+            <strong id="anzahl-spieler">0 Teilnehmer</strong>
+            <button class="btn gross" id="btn-start" disabled>Quiz starten ▶</button>
+          </div>
+        </div>
+      </div>
+      <div class="namen" id="namen"></div>
+    </section>
+
+    <!-- Frage läuft -->
+    <section data-ansicht="frage" class="versteckt">
+      <div class="infozeile" style="margin-bottom:8px"><span id="frage-nr"></span></div>
+      <div class="beamer-frage" id="frage-text"></div>
+      <div class="beamer-mitte">
+        <div class="countdown">
+          <svg viewBox="0 0 120 120" width="120" height="120">
+            <circle cx="60" cy="60" r="52" fill="#fff" stroke="#d9d9d9" stroke-width="10"/>
+            <circle id="ring" cx="60" cy="60" r="52" fill="none" stroke="#c8102e" stroke-width="10"
+                    stroke-dasharray="326.7" stroke-dashoffset="0" stroke-linecap="round"/>
+          </svg>
+          <div class="zahl" id="countdown-zahl"></div>
+        </div>
+        <div class="antwortzaehler"><span id="beantwortet">0</span><small>Antworten</small></div>
+        <button class="btn grau" id="btn-frage-ende">Frage beenden</button>
+      </div>
+      <div class="kacheln" id="kacheln"></div>
+    </section>
+
+    <!-- Auflösung -->
+    <section data-ansicht="aufloesung" class="versteckt">
+      <div class="infozeile" style="margin-bottom:8px"><span id="aufl-nr"></span></div>
+      <div class="beamer-frage" id="aufl-text"></div>
+      <div class="balken" id="balken"></div>
+      <div class="kacheln" id="aufl-kacheln"></div>
+      <div class="steuerung"><button class="btn gross" id="btn-zur-rangliste">Rangliste ▶</button></div>
+    </section>
+
+    <!-- Info-Seite zur Frage -->
+    <section data-ansicht="info" class="versteckt">
+      <div class="info-kopf">
+        <span class="gedimmt" id="info-nr"></span>
+        <span class="loesung" id="info-loesung"></span>
+      </div>
+      <div class="folie-rahmen"><div id="info-folie" class="folie"></div></div>
+      <div class="steuerung"><button class="btn gross" id="btn-info-weiter">Rangliste ▶</button></div>
+    </section>
+
+    <!-- Rangliste -->
+    <section data-ansicht="rangliste" class="versteckt">
+      <h2 class="zentriert" style="font-size:2.2rem;color:var(--rot-dunkel)">Rangliste</h2>
+      <ol class="rangliste" id="rangliste"></ol>
+      <div class="steuerung"><button class="btn gross" id="btn-naechste">Nächste Frage ▶</button></div>
+    </section>
+
+    <!-- Ende -->
+    <section data-ansicht="ende" class="versteckt">
+      <!-- Siegerehrung Schritt für Schritt (host.js: siegerehrungSchritte) -->
+      <div class="se" id="se">
+        <div class="se-kopf"><h2 id="se-titel"></h2><div class="se-unter" id="se-unter"></div></div>
+        <div class="se-buehne" id="se-buehne"></div>
+        <div class="se-steuerung">
+          <div class="se-fortschritt" id="se-fortschritt"></div>
+          <button class="btn gross" id="se-weiter">Weiter ▶</button>
+        </div>
+      </div>
+      <!-- danach: vollständige Liste -->
+      <div class="karte versteckt" id="ende-ergebnis">
+        <h2>Alle Ergebnisse</h2>
+        <ol class="rangliste" id="ende-liste"></ol>
+        <div class="steuerung">
+          <a class="btn hell" id="btn-auswertung" href="/admin.html#ergebnisse">Zur Auswertung</a>
+          <a class="btn" href="/admin.html">Zurück zur Übersicht</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/common.js"></script>
+  <script src="/js/folie.js"></script>
+  <script src="/js/host.js"></script>
+</body>
+</html>

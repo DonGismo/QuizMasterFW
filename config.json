@@ -1,0 +1,7 @@
+{
+  "port": 3000,
+  "adminPin": "112112",
+  "standardZeit": 20,
+  "titel": "QuizMaster FW",
+  "maxUploadMB": 200
+}

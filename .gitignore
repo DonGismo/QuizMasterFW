@@ -1,0 +1,12 @@
+node_modules/
+data/
+installer/stage/
+installer/out/
+installer/obj/
+installer/bin/
+
+# Generiert von installer/grafiken.js beim MSI-Build
+installer/assets/
+
+# Lokale Dateien
+*.log

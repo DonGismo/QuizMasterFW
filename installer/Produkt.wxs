@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  MSI-Paket für QuizMaster FW.
+  Installiert nach "C:\Program Files\QuizMaster FW":
+    node\node.exe          mitgelieferte Node.js-Laufzeit (keine separate Installation nötig)
+    app\…                  Server, Oberfläche, Abhängigkeiten, Standard-config.json
+    QuizMaster FW.exe      Starter mit Symbol im Infobereich (Server ohne Fenster, Menü mit „Beenden“)
+    QuizMaster FW starten.cmd   Alternative mit Konsolenfenster (Fehlersuche)
+  Daten und Konfiguration liegen beschreibbar je Benutzer unter %LOCALAPPDATA%\QuizMasterFW
+  (bleiben bei Deinstallation/Update erhalten).
+  Optional (Dialog „Windows-Firewall“): Freigabe TCP 3000 für das lokale Netz im Profil „Privat“.
+-->
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui"
+     xmlns:fw="http://wixtoolset.org/schemas/v4/wxs/firewall">
+
+  <Package Name="QuizMaster FW"
+           Manufacturer="Feuerwehr"
+           Version="$(var.ProductVersion)"
+           UpgradeCode="26702593-5EB0-4ED1-8047-4D32DB417633"
+           Scope="perMachine"
+           Language="1031"
+           Codepage="1252">
+
+    <SummaryInformation Description="QuizMaster FW – Live-Quiz für die Feuerwehr im lokalen WLAN" Manufacturer="Feuerwehr" />
+    <!-- AllowSameVersionUpgrades: ein Neubau mit gleicher Versionsnummer ersetzt die installierte Fassung,
+         statt ein zweites Mal in „Installierte Apps“ aufzutauchen -->
+    <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="Eine neuere Version von QuizMaster FW ist bereits installiert." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Icon Id="QuizMasterIcon" SourceFile="$(var.AssetsDir)\quizmaster.ico" />
+    <Property Id="ARPPRODUCTICON" Value="QuizMasterIcon" />
+
+    <!-- Firewall-Freigabe: im Dialog wählbar, ohne Oberfläche per FIREWALL=1 (Standard) bzw. FIREWALL="" -->
+    <Property Id="FIREWALL" Value="1" Secure="yes" />
+
+    <!-- Oberfläche: Willkommen → Zielordner → Windows-Firewall → Installieren -->
+    <UI Id="QuizMasterUI">
+      <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
+      <DialogRef Id="FirewallDlg" />
+      <!-- Lizenzseite überspringen -->
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" Condition="NOT Installed" />
+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
+      <!-- Firewall-Dialog zwischen Zielordner und „Bereit zur Installation“ -->
+      <Publish Dialog="InstallDirDlg" Control="Next" Event="NewDialog" Value="FirewallDlg" Order="5"
+               Condition="WIXUI_DONTVALIDATEPATH OR WIXUI_INSTALLDIR_VALID=&quot;1&quot;" />
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="FirewallDlg" Order="2" Condition="NOT Installed" />
+    </UI>
+    <WixVariable Id="WixUIBannerBmp" Value="$(var.AssetsDir)\banner.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="$(var.AssetsDir)\dialog.bmp" />
+
+    <!-- Am Ende anbieten, das Programm gleich zu starten -->
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="QuizMaster FW jetzt starten" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+    <Property Id="WixShellExecTarget" Value="[#TrayExe]" />
+    <CustomAction Id="StarteQuizMaster" DllEntry="WixShellExec" Impersonate="yes" BinaryRef="Wix4UtilCA_X64" />
+    <UI>
+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="StarteQuizMaster"
+               Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed" />
+    </UI>
+
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLFOLDER" Name="QuizMaster FW" />
+    </StandardDirectory>
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="StartmenueOrdner" Name="QuizMaster FW" />
+    </StandardDirectory>
+    <StandardDirectory Id="DesktopFolder" />
+
+    <Feature Id="Hauptprogramm" Title="QuizMaster FW" Level="1" AllowAbsent="no">
+      <ComponentGroupRef Id="Programmdateien" />
+      <ComponentRef Id="TrayKomponente" />
+      <ComponentRef Id="StartSkriptKomponente" />
+      <ComponentRef Id="DatenSkriptKomponente" />
+      <ComponentRef Id="Verknuepfungen" />
+      <ComponentRef Id="FirewallRegel" />
+    </Feature>
+
+    <!-- Alle Dateien aus dem vorbereiteten Stage-Ordner (build.ps1) außer dem Startskript -->
+    <ComponentGroup Id="Programmdateien" Directory="INSTALLFOLDER">
+      <Files Include="$(var.StageDir)\**" >
+        <Exclude Files="$(var.StageDir)\QuizMaster FW.exe" />
+        <Exclude Files="$(var.StageDir)\QuizMaster FW starten.cmd" />
+        <Exclude Files="$(var.StageDir)\Daten-Ordner oeffnen.cmd" />
+      </Files>
+    </ComponentGroup>
+
+    <!-- Taskleisten-Starter: Server unsichtbar, Symbol im Infobereich mit „Beenden“ -->
+    <Component Id="TrayKomponente" Directory="INSTALLFOLDER">
+      <File Id="TrayExe" Source="$(var.StageDir)\QuizMaster FW.exe" KeyPath="yes" />
+    </Component>
+    <Component Id="StartSkriptKomponente" Directory="INSTALLFOLDER">
+      <File Id="StartSkript" Source="$(var.StageDir)\QuizMaster FW starten.cmd" KeyPath="yes" />
+    </Component>
+    <Component Id="DatenSkriptKomponente" Directory="INSTALLFOLDER">
+      <File Id="DatenSkript" Source="$(var.StageDir)\Daten-Ordner oeffnen.cmd" KeyPath="yes" />
+    </Component>
+
+    <Component Id="Verknuepfungen" Directory="StartmenueOrdner">
+      <Shortcut Id="StartmenueStart" Name="QuizMaster FW" Description="Startet den Quiz-Server im Hintergrund (Symbol im Infobereich) und öffnet die Verwaltung"
+                Target="[INSTALLFOLDER]QuizMaster FW.exe" WorkingDirectory="INSTALLFOLDER" />
+      <Shortcut Id="StartmenueKonsole" Name="QuizMaster FW (mit Konsolenfenster)" Description="Startet den Server sichtbar im Konsolenfenster – zur Fehlersuche"
+                Target="[INSTALLFOLDER]QuizMaster FW starten.cmd" WorkingDirectory="INSTALLFOLDER" Icon="QuizMasterIcon" />
+      <Shortcut Id="DesktopStart" Directory="DesktopFolder" Name="QuizMaster FW" Description="Startet den Quiz-Server im Hintergrund (Symbol im Infobereich) und öffnet die Verwaltung"
+                Target="[INSTALLFOLDER]QuizMaster FW.exe" WorkingDirectory="INSTALLFOLDER" />
+      <Shortcut Id="StartmenueDaten" Name="QuizMaster FW Daten und Einstellungen" Description="Ordner mit Quizzen, Ergebnissen, Medien und config.json (Admin-PIN)"
+                Target="[INSTALLFOLDER]Daten-Ordner oeffnen.cmd" WorkingDirectory="INSTALLFOLDER" />
+      <RemoveFolder Id="StartmenueOrdnerEntfernen" On="uninstall" />
+      <RegistryValue Root="HKCU" Key="Software\QuizMasterFW" Name="Verknuepfungen" Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+
+    <!-- Nur wenn im Dialog bestätigt: eingehende Verbindungen auf TCP 3000 aus dem lokalen Subnetz (Profil Privat).
+         Die Regel wird bei der Deinstallation automatisch entfernt. -->
+    <Component Id="FirewallRegel" Directory="INSTALLFOLDER" Condition="FIREWALL = 1">
+      <fw:FirewallException Id="QuizMasterPort" Name="QuizMaster FW (TCP 3000)"
+                            Description="Zugriff der Teilnehmer-Handys im lokalen WLAN auf QuizMaster FW"
+                            Port="3000" Protocol="tcp" Scope="localSubnet" Profile="private" />
+      <RegistryValue Root="HKLM" Key="Software\QuizMasterFW" Name="FirewallFreigabe" Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+  </Package>
+</Wix>

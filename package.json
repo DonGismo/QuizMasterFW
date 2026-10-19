@@ -1,0 +1,39 @@
+{
+  "name": "quizmaster-fw",
+  "version": "1.3.0",
+  "description": "Live-Quiz für die Feuerwehr-Ausbildung mit Beamer und Handys – läuft komplett im lokalen WLAN",
+  "main": "server/index.js",
+  "private": true,
+  "author": "DonGismo",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DonGismo/QuizMasterFW.git"
+  },
+  "homepage": "https://github.com/DonGismo/QuizMasterFW#readme",
+  "keywords": [
+    "feuerwehr",
+    "quiz",
+    "ausbildung",
+    "socket.io",
+    "lan",
+    "live-quiz"
+  ],
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node --test test/",
+    "lasttest": "node tools/lasttest.js",
+    "msi": "powershell -ExecutionPolicy Bypass -File installer/build.ps1"
+  },
+  "engines": {
+    "node": ">=20.15"
+  },
+  "dependencies": {
+    "express": "^4.22.3",
+    "qrcode": "^1.5.4",
+    "socket.io": "^4.8.4"
+  },
+  "devDependencies": {
+    "socket.io-client": "^4.8.4"
+  }
+}

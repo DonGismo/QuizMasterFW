@@ -1,0 +1,27 @@
+{
+  "titel": "Atemschutz – Jährliche Unterweisung (FwDV 7)",
+  "beschreibung": "Theorie-Quiz zur Unterweisung „Atemschutz: Unterweisung und Überwachung“",
+  "ranglisteIntervall": 5,
+  "fragen": [
+    { "frage": "Wie viele Atemschutzgeräteträger bilden mindestens einen Trupp?", "antworten": ["1", "2", "3", "4"], "richtig": 1, "zeit": 15 },
+    { "frage": "Wie oft muss ein AGT eine Belastungsübung ableisten, um einsatzfähig zu bleiben?", "antworten": ["Alle 6 Monate", "Alle 24 Monate", "Alle 12 Monate", "Nur einmal im AGT-Lehrgang"], "richtig": 2, "zeit": 20 },
+    { "frage": "Welche arbeitsmedizinische Untersuchung muss für die Tauglichkeit gültig sein?", "antworten": ["G26.3", "G20", "G37", "G41"], "richtig": 0, "zeit": 15 },
+    { "frage": "Wer meldet vor jeder Übung und jedem Einsatz, ob ein AGT einsatztauglich ist?", "antworten": ["Die Atemschutzüberwachung", "Der AGT selbst dem Einheitsführer", "Der Gerätewart", "Der Truppführer für den ganzen Trupp"], "richtig": 1, "zeit": 20 },
+    { "frage": "Welcher Flaschendruck ist bei der Kurzprüfung mindestens erforderlich (Soll 300 bar)?", "antworten": ["200 bar", "250 bar", "280 bar", "270 bar"], "richtig": 3, "zeit": 20 },
+    { "frage": "Dichtheitsprüfung der Hochdruckseite: Wie viel Druckabfall ist in 1 Minute höchstens erlaubt?", "antworten": ["10 bar", "5 bar", "20 bar", "30 bar"], "richtig": 0, "zeit": 20 },
+    { "frage": "Bei welchem Flaschendruck muss das Warnsignal ertönen?", "antworten": ["30 bar ± 5 bar", "70 bar ± 5 bar", "50 bar ± 5 bar", "100 bar ± 5 bar"], "richtig": 2, "zeit": 20 },
+    { "frage": "Was bewirkt die Überdrucktechnik in der Maske?", "antworten": ["Die Flaschenluft reicht deutlich länger", "Die Dichtheitsprüfung der Maske entfällt", "Das Ausatmen wird leichter", "Luft strömt immer leicht nach, Rauch kann nicht eindringen"], "richtig": 3, "zeit": 25 },
+    { "frage": "Wie wird der Lungenautomat deaktiviert?", "antworten": ["Roten Knopf drücken", "Kräftig einatmen", "Spülfunktion betätigen", "Flaschenventil zudrehen"], "richtig": 0, "zeit": 15 },
+    { "frage": "Nach wie vielen Sekunden ohne Bewegung gibt der Totmann-Melder Voralarm?", "antworten": ["10 s", "21 s", "30 s", "60 s"], "richtig": 1, "zeit": 20 },
+    { "frage": "Start 300 bar, am Ziel noch 230 bar. Bei welchem Druck muss der Rückzug beginnen?", "antworten": ["70 bar", "100 bar", "140 bar", "160 bar"], "richtig": 2, "zeit": 30 },
+    { "frage": "Welcher Druck ist für den Rückzug des Trupps maßgebend?", "antworten": ["Der Druck des Truppführers", "Der geringere Druck eines Truppmitglieds", "Der Durchschnitt beider Truppmitglieder", "Der höhere Druck eines Truppmitglieds"], "richtig": 1, "zeit": 20 },
+    { "frage": "Wie oft muss die Atemschutzüberwachung den Druck mindestens abfragen?", "antworten": ["Alle 5 Minuten", "Alle 15 Minuten", "Alle 20 Minuten", "Alle 10 Minuten"], "richtig": 3, "zeit": 15 },
+    { "frage": "Wann muss der Sicherheitstrupp spätestens bereitstehen?", "antworten": ["Beim Anschluss des Atemschutztrupps", "Wenn der Trupp das Ziel erreicht", "Erst bei einem Notruf", "Beim Rückzug des Trupps"], "richtig": 0, "zeit": 20 },
+    { "frage": "Wie viel Luft enthält eine 6-Liter-Flasche bei 300 bar?", "antworten": ["600 l", "1200 l", "1800 l", "3000 l"], "richtig": 2, "zeit": 25 },
+    { "frage": "Ab welchem Verbrauch muss der Druckabfall sofort hinterfragt werden?", "antworten": ["Mehr als 5 bar pro Minute", "Mehr als 10 bar pro Minute", "Mehr als 20 bar pro Minute", "Mehr als 30 bar pro Minute"], "richtig": 1, "zeit": 20 },
+    { "frage": "Mit welchem Luftverbrauch ist bei einer Menschenrettung zu rechnen?", "antworten": ["Etwa 9 l/min", "15–30 l/min", "150–200 l/min", "60–90 l/min"], "richtig": 3, "zeit": 20 },
+    { "frage": "Wann muss ein Standortwechsel an den Einheitsführer gemeldet werden?", "antworten": ["Bei jedem Zimmerwechsel", "Nur beim Rückzug", "Beim Wechsel des Geschosses oder Abschnitts", "Gar nicht, die AÜ sieht es"], "richtig": 2, "zeit": 20 },
+    { "frage": "Welche Angaben gehören in den Mayday-Notruf?", "antworten": ["Name, Standort, Lage", "Name, Flaschendruck, Uhrzeit", "Funkkanal, Trupp-Nummer, Auftrag", "Nur dreimal „Mayday“"], "richtig": 0, "zeit": 20 },
+    { "frage": "Wie hat die IARC 2022 die Tätigkeit als Feuerwehrangehöriger eingestuft?", "antworten": ["Gruppe 2B – möglicherweise krebserregend", "Gruppe 1 – krebserregend", "Gruppe 3 – nicht einstufbar", "Gar nicht eingestuft"], "richtig": 1, "zeit": 20 }
+  ]
+}

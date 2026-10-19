@@ -1,0 +1,1732 @@
+{
+  "titel": "Brandbekämpfung zur Menschenrettung",
+  "beschreibung": "Theorie-Quiz zur Ausbildung „Wasser aufs Feuer – so retten wir Leben“, mit Info-Folie zu jeder Frage",
+  "ranglisteIntervall": 5,
+  "fragen": [
+    {
+      "frage": "Was ist die Kernbotschaft der „Brandbekämpfung zur Menschenrettung“?",
+      "antworten": [
+        "Wasser aufs Feuer rettet Leben",
+        "Erst alle Räume durchsuchen, dann löschen",
+        "Menschenrettung ist nicht mehr oberstes Ziel",
+        "Nur noch Außenangriff vorbereiten"
+      ],
+      "richtig": 0,
+      "zeit": 20,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Wasser aufs Feuer rettet Leben"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Die Menschenrettung bleibt das höchste Ziel (FwDV 3). Der schnellste Weg dorthin ist meist: das Feuer löschen. Jede Sekunde Löschen stoppt Hitze und Atemgifte – für alle Personen in der Nutzungseinheit gleichzeitig."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "hinweis",
+            "groesse": "m",
+            "ausrichtung": "mitte",
+            "text": "Personen, die wir auf dem Weg zum Brand finden, werden SOFORT gerettet – das bleibt richtig."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019), FwDV 3  ·  Frage 1 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Wie schnell kam es in den UL-Versuchen mit moderner Wohnungseinrichtung zum Flashover?",
+      "antworten": [
+        "Nach etwa 10 Minuten",
+        "Nach etwa 20 Minuten",
+        "In weniger als 4 Minuten",
+        "Erst nach über 29 Minuten"
+      ],
+      "richtig": 2,
+      "zeit": 20,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Flashover in unter 4 Minuten"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Zwei gleiche Wohnzimmer wurden angezündet: Mit modernen Möbeln (Kunststoff, Schaumstoff) kam der Flashover nach unter 4 Minuten, mit Möbeln wie in den 1950–70ern erst nach über 29 Minuten. Bis wir eintreffen, ist der Raum oft schon durchgezündet."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "info",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Unsere Zeit ist knapp – Wasser muss schnell in den Brandraum."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: UL, Kerber (2012)  ·  Frage 2 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Ein ventilationsgesteuerter Brand bekommt plötzlich Luft (Tür auf, Fenster kaputt, Lüfter). Was passiert?",
+      "antworten": [
+        "Der Brand erstickt",
+        "Der Brand beschleunigt schlagartig",
+        "Der Rauch wird sofort ungiftiger",
+        "Nichts – der Sauerstoff ist schon verbraucht"
+      ],
+      "richtig": 1,
+      "zeit": 20,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Luft ist das Gaspedal"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Kunststoffe und dicht gedämmte Gebäude führen dazu, dass der Brand den Sauerstoff verbraucht und viel unverbranntes Brandgas (CO!) entsteht. Bekommt dieser Brand plötzlich Luft, steigen Temperatur und Ausbreitung schlagartig."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "hinweis",
+            "groesse": "m",
+            "ausrichtung": "mitte",
+            "text": "Jede Öffnung – Tür, Fenster, Lüfter – ist eine taktische Entscheidung."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 3 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Wo im Strömungspfad ist der Aufenthalt für den Trupp besonders gefährlich?",
+      "antworten": [
+        "Auf der Zuluftseite in Bodennähe",
+        "Vor dem Gebäude auf der Windseite",
+        "In einem Raum mit geschlossener Tür",
+        "Zwischen Feuer und Abluftöffnung"
+      ],
+      "richtig": 3,
+      "zeit": 20,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Zwischen Feuer und Abluft"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Jeder Brand braucht Zu- und Abluft: Kalte Luft strömt unten zum Feuer, heißer Rauch oben zur Abluftöffnung. Wer zwischen Feuer und Abluft steht, dem strömen Hitze und Flammen entgegen. Auch das Öffnen der Wohnungstür durch uns verändert den Strömungspfad!"
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "hinweis",
+            "groesse": "m",
+            "ausrichtung": "mitte",
+            "text": "Wer zwischen Feuer und Abluft steht, steht im Ofenrohr."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 4 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Flammen füllen das ganze Fenster des Brandraums aus. Was bedeutet das?",
+      "antworten": [
+        "Das Fenster ist reine Abluft – die Luft kommt von woanders",
+        "Der Brand ist ventilationsgesteuert",
+        "Das Fenster ist Zu- und Abluft zugleich",
+        "Der Brand ist fast erloschen"
+      ],
+      "richtig": 0,
+      "zeit": 25,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Reine Abluftöffnung"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Füllen Flammen das ganze Fenster, strömt dort nur Abluft aus. Die Zuluft kommt von einer anderen Stelle – z. B. offene Wohnungstür oder Wind. Diesen Strömungspfad muss man finden: Wer dort vorgeht, steht mittendrin."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "info",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Bei Flammen am Fenster herrschen unter der Decke bis zu 1000 °C."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 5 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Das Fenster ist intakt, aber Rauch drückt aus den Ritzen. Wie ist die Lage einzuschätzen?",
+      "antworten": [
+        "Der Brand ist erloschen, nur noch Restrauch",
+        "Fenster sofort von außen einschlagen",
+        "Lüfter sofort in den Brandraum",
+        "Ventilationsgesteuerter Brand – öffnen nur mit Wasser am Rohr"
+      ],
+      "richtig": 3,
+      "zeit": 25,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Ventilationsgesteuert!"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Der Brand hat zu wenig Sauerstoff und wartet nur auf Luft. Erst muss Wasser bereitstehen, dann wird geöffnet – von innen und kontrolliert. Nicht von außen einschlagen!"
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "hinweis",
+            "groesse": "m",
+            "ausrichtung": "mitte",
+            "text": "Erst Wasser am Rohr, dann öffnen."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 6 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Welches Merkmal des Rauchs lässt sich ohne viel Erfahrung am wenigsten sicher deuten?",
+      "antworten": [
+        "Volumen",
+        "Farbe",
+        "Dichte",
+        "Geschwindigkeit"
+      ],
+      "richtig": 1,
+      "zeit": 15,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Die Rauchfarbe"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Volumen, Geschwindigkeit und Dichte lassen sich auch ohne viel Erfahrung gut beurteilen. Die Farbe dagegen nur mit intensiver Ausbildung und Erfahrung – nicht überbewerten."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "info",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Schnell, dicht, drückend = viel Energie im Raum."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 7 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Was versteht man unter dem „Fensterimpuls“?",
+      "antworten": [
+        "Fenster einschlagen, damit Rauch abziehen kann",
+        "Sprühstrahl ins Fenster während des Innenangriffs",
+        "Wasser von außen durch ein bereits offenes Brandraumfenster vor dem Innenangriff",
+        "Lüfter vor das Fenster stellen"
+      ],
+      "richtig": 2,
+      "zeit": 25,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "l",
+            "ausrichtung": "links",
+            "text": "Indirekte Brandbekämpfung von außen"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Der Fensterimpuls wird kurz nach dem Eintreffen und VOR dem Innenangriff gegeben – durch ein Fenster, das zum Brandraum gehört und bereits offen oder zerstört ist. Es wird nicht extra eingeschlagen."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "info",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Fenster gehört zum Brandraum und ist schon offen."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 8 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Mit welchem Strahl wird der Fensterimpuls gegeben?",
+      "antworten": [
+        "Vollstrahl steil unter die Decke",
+        "Breiter Sprühstrahl auf die Flammen",
+        "Wassernebel ins Fenster",
+        "Sprühstrahl als Wasserschild vor dem Fenster"
+      ],
+      "richtig": 0,
+      "zeit": 20,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Vollstrahl steil unter die Decke"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Das Wasser prallt an der Decke ab und verteilt sich wie ein Sprinkler im Raum: Es trifft das Brandgut und kühlt die Rauchschicht. Das Fenster bleibt dabei Abluftöffnung – Dampf und Rauch ziehen ungehindert ab."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "info",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Durchfluss: mehr als 200 l/min."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 9 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Wie lange wird der Fensterimpuls gegeben?",
+      "antworten": [
+        "2–3 Sekunden",
+        "10–30 Sekunden",
+        "Etwa 2 Minuten",
+        "Bis das Feuer gelöscht ist"
+      ],
+      "richtig": 1,
+      "zeit": 15,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "10 bis 30 Sekunden – dann STOPP"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Der Fensterimpuls läuft, während der Angriffstrupp seine Schlauchreserve legt und zur Wohnungstür vorgeht. Schon dieser kurze Impuls senkt die Temperatur im Brandraum um mehrere hundert Grad."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "hinweis",
+            "groesse": "m",
+            "ausrichtung": "mitte",
+            "text": "Fensterimpuls: Vollstrahl, unter die Decke, 10–30 Sekunden."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 10 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Warum darf beim Fensterimpuls kein Sprühstrahl verwendet werden?",
+      "antworten": [
+        "Er hat zu wenig Reichweite",
+        "Er verbraucht zu viel Wasser",
+        "Der Sprühkegel deckt das Fenster ab – Hitze und Dampf werden in die Wohnung gedrückt",
+        "Die Scheibe könnte zerspringen"
+      ],
+      "richtig": 2,
+      "zeit": 25,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "l",
+            "ausrichtung": "links",
+            "text": "Sprühstrahl drückt die Hitze nach innen"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Der breite Sprühkegel deckt das ganze Fenster ab. Flammen, Rauch und Dampf können nicht mehr abziehen und werden in die Nutzungseinheit gedrückt – der Gefahrenbereich reicht dann bis zur Wohnungstür, der vorgehende Trupp läuft direkt hinein."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "hinweis",
+            "groesse": "m",
+            "ausrichtung": "mitte",
+            "text": "Häufigster Fehler beim Fensterimpuls!"
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 11 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Wann muss der Fensterimpuls spätestens beendet sein?",
+      "antworten": [
+        "Wenn keine Flammen mehr zu sehen sind",
+        "Nach 5 Minuten",
+        "Wenn der Lüfter läuft",
+        "Sobald der Angriffstrupp die Tür zur Nutzungseinheit öffnet"
+      ],
+      "richtig": 3,
+      "zeit": 20,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Außen STOPP, bevor innen beginnt"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Ein gleichzeitiger Außen- und Innenangriff ist immer gefährlich: Vollstrahl oder Wasserdampf können den vorgehenden Trupp verletzen. Vorher klar absprechen, wer stoppt und wann."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "hinweis",
+            "groesse": "m",
+            "ausrichtung": "mitte",
+            "text": "Außen und innen nie gleichzeitig Wasser!"
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 12 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Fensterimpuls über den Verteiler: Was passiert beim Kommando „1. C-Rohr – Wasser marsch!“?",
+      "antworten": [
+        "Beide C-Rohre werden geöffnet",
+        "1. C-Rohr auf, Fensterimpuls zu",
+        "Der Fensterimpuls wird verstärkt",
+        "Die B-Leitung wird entleert"
+      ],
+      "richtig": 1,
+      "zeit": 25,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Ein Kommando – zwei Handgriffe"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Der Maschinist bzw. Verteilerposten öffnet beim Kommando das Ventil für den Angriffstrupp und schließt gleichzeitig das Ventil für den Fensterimpuls. So ist gleichzeitige Wasserabgabe außen und innen technisch ausgeschlossen."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "info",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Praxistipp aus der Fachempfehlung."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 13 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Verbrüht Wasserdampf beim Löschen die Personen im Brandraum? Was zeigten die UL-Großversuche?",
+      "antworten": [
+        "Ja, die Verbrennungen werden deutlich schlimmer",
+        "Nein – Wasser senkt die Temperatur, die Verletzungen wurden nicht schlimmer",
+        "Nur beim Außenangriff werden sie schlimmer",
+        "Dampf erhöht die Raumtemperatur"
+      ],
+      "richtig": 1,
+      "zeit": 25,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Mythos: „Wir verbrühen die Opfer“"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Weder Innen- noch Außenangriff erhöhten in den Versuchen das Verbrennungsrisiko der Opfer. Wie beim Sauna-Aufguss fühlt sich Dampf heißer an, die Temperatur steigt aber nicht – und das Wasser senkt die Raumtemperatur massiv."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "hinweis",
+            "groesse": "m",
+            "ausrichtung": "mitte",
+            "text": "Wasser in den Brandraum hat immer einen positiven Effekt – wenn es eine Abluftöffnung gibt."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: UL FSRI (2018)  ·  Frage 14 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Welcher Durchfluss sollte bei der direkten Brandbekämpfung am Hohlstrahlrohr mindestens eingestellt sein?",
+      "antworten": [
+        "Mindestens 50 l/min",
+        "Mindestens 100 l/min",
+        "Mehr als 150 l/min",
+        "Höchstens 100 l/min"
+      ],
+      "richtig": 2,
+      "zeit": 20,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Mehr als 150 l/min"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Die einzige wirklich löschende Maßnahme ist Wasser direkt aufs Brandgut. Viel Wärme braucht viel Wasser: So viel Wasser in kurzer Zeit, dass es sich am Brandgut nur erwärmt und wenig Dampf entsteht."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "info",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Brand kleiner = weniger Wärme, weniger Atemgift, bessere Sicht – sicherer für den Trupp."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 15 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Gefährdungsbereich ROT („gefährlich“): Wie lange können Einsatzkräfte dort höchstens bleiben?",
+      "antworten": [
+        "Bis 25 Minuten",
+        "Bis 10 Minuten",
+        "Etwa 5 Minuten",
+        "Etwa 1 Minute"
+      ],
+      "richtig": 3,
+      "zeit": 20,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Rot: nur etwa 1 Minute"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Grün (sicher): bis 100 °C, bis 25 Min.\nGelb (unsicher): bis 120 °C, bis 10 Min.\nRot (gefährlich): bis 160 °C, ca. 1 Min. – darüber steigt die Gefahr exponentiell."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "hinweis",
+            "groesse": "m",
+            "ausrichtung": "mitte",
+            "text": "Gilt nur mit vollständiger PSA und Atemschutz – NICHT für Opfer. Grenzen verschieben sich jederzeit."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: AG Realbrandausbildung NRW  ·  Frage 16 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Ein Fenster im Nebenraum (nicht im Brandraum) wird geöffnet. Was passiert?",
+      "antworten": [
+        "Der Brandraum kühlt ab",
+        "Der Rauch zieht sicher ab",
+        "Ein neuer Strömungspfad zieht das Feuer durch die Wohnung",
+        "Es hat keine Auswirkung"
+      ],
+      "richtig": 2,
+      "zeit": 20,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Neuer Strömungspfad"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Feuer und Hitze werden aus dem Brandraum in Richtung der neuen Öffnung gesaugt, im Brandraum steigt die Temperatur durch den Sauerstoff erheblich. Das gilt auch für das Öffnen der Wohnungstür!"
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "hinweis",
+            "groesse": "m",
+            "ausrichtung": "mitte",
+            "text": "Abluft zuerst – im Brandraum, groß genug."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 17 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Wozu dient der Rauchvorhang in der Wohnungstür?",
+      "antworten": [
+        "Er kühlt den Brandraum",
+        "Er verstärkt die Zuluft für den Lüfter",
+        "Er ersetzt den Atemschutz im Flur",
+        "Er hält den Treppenraum rauchfrei und begrenzt die Luftzufuhr"
+      ],
+      "richtig": 3,
+      "zeit": 20,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Die Tür ist euer Werkzeug"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Rauchvorhang und Türkontrolle sind aktive Antiventilation: Sie steuern die Zuluft. Der Rauchvorhang hält den Treppenraum als Rettungsweg rauchfrei. Die Tür wird nur mit Wasser am Rohr geöffnet – so weit wie nötig, so kurz wie möglich."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "info",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Rauchvorhang zuerst – am besten als Ersteinsatzmittel bereitlegen."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 18 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Wann darf ein Überdrucklüfter vor dem Löscherfolg in den Brandraum blasen?",
+      "antworten": [
+        "Wenn eine ausreichend große Abluftöffnung im Brandraum besteht und der Strömungspfad kontrolliert ist",
+        "Immer sofort als Erstmaßnahme",
+        "Sobald der Trupp an der Wohnungstür steht",
+        "Nur wenn alle Fenster geschlossen sind"
+      ],
+      "richtig": 0,
+      "zeit": 25,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "l",
+            "ausrichtung": "links",
+            "text": "Abluft zuerst – im Brandraum, groß genug"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Vor dem Knock-down bekommt der Brand Sauerstoff und wird größer – gleichzeitig werden Sicht und Atemgifte besser. Das ist nur sinnvoll, wenn Brandphänomene ausgeschlossen sind und eine wirksame Abluftöffnung existiert. Nach dem Knock-down funktioniert Entrauchen gut."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "hinweis",
+            "groesse": "m",
+            "ausrichtung": "mitte",
+            "text": "Ohne ausreichende Abluftöffnung: extreme Brandphänomene möglich!"
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 19 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Soll ein Fenster des Brandraums von außen eingeschlagen werden?",
+      "antworten": [
+        "Ja, immer zur Ventilation",
+        "Ja, vor dem Fensterimpuls",
+        "Ja, wenn starker Wind herrscht",
+        "Nein – Öffnungen schafft der Trupp von innen mit Wasser am Rohr"
+      ],
+      "richtig": 3,
+      "zeit": 20,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Öffnungen von innen schaffen"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Ein eingeschlagenes Fenster lässt sich nicht mehr schließen. Gehört es nicht zum Brandraum, entsteht ein ungewollter Strömungspfad. Drückt Wind auf die neue Öffnung, kann eine Winddruck-Stichflamme bis in den Treppenraum entstehen."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "info",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Von innen kann der Trupp reagieren und die Tür wieder schließen."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 20 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Wie heiß war es in den UL-Versuchen („Close Before You Doze“) in Zimmern mit geschlossener Tür?",
+      "antworten": [
+        "Unter 40 °C",
+        "Etwa 100 °C",
+        "Etwa 200 °C",
+        "Über 540 °C"
+      ],
+      "richtig": 0,
+      "zeit": 20,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Die geschlossene Tür rettet Leben"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Tür offen: über 540 °C und über 10.000 ppm CO.\nTür geschlossen: unter 40 °C und etwa 100 ppm CO.\nSelbst einfache Zimmertüren halten Hitze und Atemgifte fern."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "hinweis",
+            "groesse": "m",
+            "ausrichtung": "mitte",
+            "text": "Öffnen WIR die Tür, solange es brennt, fällt die Barriere zwischen Überleben und Tod."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: UL FSRI – Close Before You Doze  ·  Frage 21 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "In welcher Reihenfolge wird nach dem Löschen nach vermissten Personen gesucht?",
+      "antworten": [
+        "Brandraum → Räume mit offener Tür → Räume mit geschlossener Tür",
+        "Geschlossene Türen → offene Türen → Brandraum",
+        "Offene Türen → Brandraum → geschlossene Türen",
+        "Treppenraum → Keller → Brandraum"
+      ],
+      "richtig": 0,
+      "zeit": 25,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Suche 1 – 2 – 3"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "1. Brandraum\n2. Räume mit geöffneter Tür\n3. Räume mit zuvor geschlossener Tür\nJe weniger Hitze und Atemgift in der Wohnung ist, desto weniger schadet das Öffnen einer Tür der Person dahinter."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "hinweis",
+            "groesse": "m",
+            "ausrichtung": "mitte",
+            "text": "Geschlossene Türen bleiben zu, bis das Feuer aus ist."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019)  ·  Frage 22 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Lage ohne Ventilationsöffnung (Ablauf B): Was macht der Angriffstrupp an der geöffneten Wohnungstür zuerst?",
+      "antworten": [
+        "Sofort ohne Sicht in die Wohnung vorgehen",
+        "Mit der Wärmebildkamera von der Tür aus sichten und wenn möglich schon von dort löschen",
+        "Lüfter in die Wohnung blasen lassen",
+        "Alle Zimmertüren öffnen"
+      ],
+      "richtig": 1,
+      "zeit": 25,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Wärmebildkamera von der Tür aus"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Vorher wird der Rauchvorhang gesetzt, ggf. durch die Tür gekühlt. Dann sichtet der Trupp mit der WBK von der Tür aus und nutzt die Wurfweite. Sonst mit WBK zügig vorgehen, Brand finden und löschen – ungeschützte Personen am Weg sofort retten."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "hinweis",
+            "groesse": "m",
+            "ausrichtung": "mitte",
+            "text": "Kein Lüfter in den Brandraum ohne ausreichende Abluftöffnung!"
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019), Ablauf B  ·  Frage 23 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Du spürst im Innenangriff deutliche Hitze durch die Schutzkleidung. Was bedeutet das?",
+      "antworten": [
+        "Die PSA arbeitet normal, weitermachen",
+        "Nur die Handschuhe sind nass",
+        "Die Kleidung ist bereits durchwärmt – die Wärme kommt weiter nach, früh zurückziehen",
+        "Die Hitze lässt gleich nach"
+      ],
+      "richtig": 2,
+      "zeit": 20,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Wird es heiß, ist es schon spät"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Die Isolierung arbeitet mit Luftpolstern. Schweiß oder Nässe leiten die Wärme schneller zur Haut. Spürt man Hitze, ist die Kleidung bereits durchwärmt. Und: Nur korrekt angelegt schützt die PSA – Lücken an Kragen, Ärmeln, Haube, Handschuhen sind Verbrennungen."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "info",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Der Mensch in der PSA ist der begrenzende Faktor (Hitzestress)."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: Fachempfehlung NRW (2019), UL  ·  Frage 24 von 25"
+          }
+        ]
+      }
+    },
+    {
+      "frage": "Wie wird kontaminierte Einsatzkleidung nach einem Brandeinsatz gereinigt?",
+      "antworten": [
+        "Nur über die Wehr reinigen lassen – nie zu Hause",
+        "Ausklopfen und weiter tragen",
+        "Zu Hause bei 60 °C waschen",
+        "Im Mannschaftsraum zum Lüften aufhängen"
+      ],
+      "richtig": 0,
+      "zeit": 20,
+      "info": {
+        "aktiv": true,
+        "hintergrund": "weiss",
+        "elemente": [
+          {
+            "id": "titel",
+            "typ": "text",
+            "x": 5,
+            "y": 6,
+            "w": 90,
+            "h": 13,
+            "z": 1,
+            "stil": "titel",
+            "groesse": "xl",
+            "ausrichtung": "links",
+            "text": "Nie zu Hause waschen"
+          },
+          {
+            "id": "text",
+            "typ": "text",
+            "x": 5,
+            "y": 24,
+            "w": 54,
+            "h": 58,
+            "z": 2,
+            "stil": "text",
+            "groesse": "m",
+            "ausrichtung": "links",
+            "text": "Die IARC (WHO) hat 2022 die Tätigkeit als Feuerwehrangehörige/r als krebserregend eingestuft (Gruppe 1). Deshalb: Handschuhe und FFP3 beim Ablegen, Hände und Gesicht an der Einsatzstelle reinigen, Kleidung luftdicht verpacken, getrennt transportieren, bald duschen."
+          },
+          {
+            "id": "merk",
+            "typ": "text",
+            "x": 62,
+            "y": 24,
+            "w": 33,
+            "h": 46,
+            "z": 3,
+            "stil": "hinweis",
+            "groesse": "m",
+            "ausrichtung": "mitte",
+            "text": "Kontamination nicht verschleppen – nicht ins Auto, nicht nach Hause."
+          },
+          {
+            "id": "quelle",
+            "typ": "text",
+            "x": 5,
+            "y": 87,
+            "w": 90,
+            "h": 7,
+            "z": 4,
+            "stil": "text",
+            "groesse": "s",
+            "ausrichtung": "links",
+            "text": "Quelle: IARC 2022, DGUV 205-035  ·  Frage 25 von 25"
+          }
+        ]
+      }
+    }
+  ]
+}

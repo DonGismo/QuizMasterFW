@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#c8102e">
+  <title>QuizMaster FW</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="kopf">
+    <span data-logo></span>
+    <h1>QuizMaster FW</h1>
+    <div class="rechts"><span id="kopf-name" class="versteckt"></span></div>
+  </header>
+
+  <main>
+    <!-- Beitreten -->
+    <section data-ansicht="beitreten" class="beitreten">
+      <div class="karte">
+        <span class="gross-logo" data-logo></span>
+        <h2>Mitspielen</h2>
+        <form id="form-beitreten" autocomplete="off">
+          <label for="pin">Spiel-PIN</label>
+          <input id="pin" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="123456" required>
+          <label for="name">Dein Name</label>
+          <input id="name" type="text" maxlength="20" placeholder="Vorname Nachname" required>
+          <div id="fehler-beitreten" class="meldung versteckt"></div>
+          <button class="btn gross breit" type="submit" style="margin-top:16px">Los geht's!</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Warten in der Lobby -->
+    <section data-ansicht="warten" class="versteckt">
+      <div class="karte status-bild">
+        <div class="gross">🚒</div>
+        <h2>Du bist dabei!</h2>
+        <p><span class="name-plakette" id="warten-name"></span></p>
+        <p class="gedimmt">Gleich geht's los – schau auf den Bildschirm.</p>
+        <div class="streifen"></div>
+      </div>
+    </section>
+
+    <!-- Frage beantworten -->
+    <section data-ansicht="frage" class="versteckt">
+      <div class="spiel-ansicht">
+        <div class="infozeile"><span id="frage-nr"></span><span id="frage-zeit"></span></div>
+        <div class="zeitleiste"><div id="zeitbalken"></div></div>
+        <p class="spiel-frage" id="frage-text"></p>
+        <div class="kacheln" id="kacheln"></div>
+      </div>
+    </section>
+
+    <!-- Antwort abgegeben -->
+    <section data-ansicht="abgegeben" class="versteckt">
+      <div class="karte status-bild">
+        <div class="gross">⏳</div>
+        <h2>Antwort gespeichert</h2>
+        <p class="gedimmt">Warte auf die anderen …</p>
+      </div>
+    </section>
+
+    <!-- Ergebnis einer Frage -->
+    <section data-ansicht="ergebnis" class="versteckt">
+      <div class="status-bild" id="ergebnis-box">
+        <div class="gross" id="ergebnis-symbol"></div>
+        <h2 id="ergebnis-titel"></h2>
+        <p class="punkte" id="ergebnis-punkte"></p>
+        <p id="ergebnis-loesung"></p>
+        <p id="ergebnis-platz"></p>
+        <p id="ergebnis-info" class="name-plakette versteckt">📺 Mehr Infos am Bildschirm</p>
+      </div>
+    </section>
+
+    <!-- Siegerehrung läuft am Beamer – eigener Platz bleibt bis zur Enthüllung des Siegers verdeckt -->
+    <section data-ansicht="siegerehrung" class="versteckt">
+      <div class="karte status-bild">
+        <div class="gross">🏆</div>
+        <h2>Siegerehrung!</h2>
+        <p class="gedimmt">Schau auf den Bildschirm – dein Platz erscheint hier, sobald der Sieger feststeht.</p>
+        <div class="streifen" style="margin:20px 0"></div>
+        <button class="btn hell klein" id="btn-ergebnis-zeigen">Mein Ergebnis jetzt anzeigen</button>
+      </div>
+    </section>
+
+    <!-- Spielende -->
+    <section data-ansicht="ende" class="versteckt">
+      <div class="karte status-bild">
+        <div class="gross" id="ende-symbol">🏆</div>
+        <h2 id="ende-titel"></h2>
+        <p class="punkte" id="ende-punkte"></p>
+        <div class="streifen" style="margin:20px 0"></div>
+        <button class="btn hell" id="btn-neu">Neues Spiel beitreten</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/common.js"></script>
+  <script src="/js/spieler.js"></script>
+</body>
+</html>

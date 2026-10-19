@@ -1,0 +1,15 @@
+{
+  "titel": "Grundlagen Feuerwehr (Beispiel)",
+  "beschreibung": "Beispielquiz zum Ausprobieren – kann bearbeitet oder gelöscht werden",
+  "fragen": [
+    { "frage": "Welche Notrufnummer erreicht die Feuerwehr in Deutschland?", "antworten": ["110", "112", "116 117", "19222"], "richtig": 1, "zeit": 15 },
+    { "frage": "Wie löscht man einen Fettbrand in der Küche?", "antworten": ["Mit Wasser", "Deckel aufsetzen", "Mit Mehl bestreuen", "Auspusten"], "richtig": 1, "zeit": 20 },
+    { "frage": "Für welche Stoffe steht die Brandklasse F?", "antworten": ["Metalle", "Gase", "Speiseöle und -fette", "Flüssigkeiten"], "richtig": 2, "zeit": 20 },
+    { "frage": "Wie viele Brandklassen gibt es nach DIN EN 2?", "antworten": ["3", "4", "5", "6"], "richtig": 2, "zeit": 20 },
+    { "frage": "Welcher Druckschlauch hat den größten Durchmesser?", "antworten": ["A-Schlauch", "B-Schlauch", "C-Schlauch", "D-Schlauch"], "richtig": 0, "zeit": 20 },
+    { "frage": "Wofür steht die Abkürzung HLF?", "antworten": ["Hochleistungsförderfahrzeug", "Hilfeleistungslöschgruppenfahrzeug", "Hauptlöschfahrzeug", "Hubrettungs-Leiterfahrzeug"], "richtig": 1, "zeit": 20 },
+    { "frage": "Was gibt die obere Zahl auf der orangefarbenen Warntafel an?", "antworten": ["Die UN-Nummer des Stoffes", "Die Gefahrnummer", "Das Gewicht der Ladung", "Die Anzahl der Behälter"], "richtig": 1, "zeit": 25 },
+    { "frage": "Wofür steht das „A“ in der GAMS-Regel?", "antworten": ["Alarmieren", "Absperren", "Atemschutz", "Abwarten"], "richtig": 1, "zeit": 20 },
+    { "frage": "Gilt in allen deutschen Bundesländern eine Rauchmelderpflicht für Wohnungen?", "antworten": ["Ja", "Nein"], "richtig": 0, "zeit": 15 }
+  ]
+}
