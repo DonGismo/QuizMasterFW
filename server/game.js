@@ -7,6 +7,28 @@ const crypto = require('crypto');
 
 const GRACE_MS = 500;               // Puffer für Netzwerklaufzeit am Fragenende
 const MAX_NAME = 20;
+// Schutz gegen Fluten eines Spiels mit Fantasie-Teilnehmern aus dem WLAN
+const MAX_SPIELER = 500;             // Teilnehmer pro Spiel
+const MAX_BEITRITTE = 20;            // Beitritte je Adresse …
+const BEITRITT_FENSTER_MS = 60 * 1000; // … pro Minute (Rechner selbst ausgenommen, z. B. Lasttest)
+const beitritte = new Map();         // Adresse → { anzahl, seit }
+
+function istLokal(adresse) {
+  return adresse === '127.0.0.1' || adresse === '::1' || adresse === '::ffff:127.0.0.1';
+}
+
+// true, wenn diese Adresse gerade zu oft beitritt
+function zuVieleBeitritte(adresse) {
+  if (istLokal(adresse)) return false;
+  const jetzt = Date.now();
+  let e = beitritte.get(adresse);
+  if (!e || jetzt - e.seit > BEITRITT_FENSTER_MS) {
+    e = { anzahl: 0, seit: jetzt };
+    beitritte.set(adresse, e);
+  }
+  e.anzahl++;
+  return e.anzahl > MAX_BEITRITTE;
+}
 const SPIEL_TIMEOUT_MS = 6 * 60 * 60 * 1000; // inaktive Spiele nach 6 h verwerfen
 
 function token() {
@@ -125,6 +147,9 @@ function createGameManager(io, store, checkPin, getJoinInfo) {
         clearTimeout(spiel.timer);
         spiele.delete(pin);
       }
+    }
+    for (const [adresse, e] of beitritte) {
+      if (jetzt - e.seit > BEITRITT_FENSTER_MS) beitritte.delete(adresse);
     }
   }, 10 * 60 * 1000).unref();
 
@@ -415,6 +440,8 @@ function createGameManager(io, store, checkPin, getJoinInfo) {
       const spiel = spiele.get(String(pin || '').trim());
       if (!spiel) return cb({ fehler: 'Kein Spiel mit dieser PIN gefunden' });
       if (spiel.zustand === 'ende') return cb({ fehler: 'Dieses Spiel ist bereits beendet' });
+      if (zuVieleBeitritte(socket.handshake.address)) return cb({ fehler: 'Zu viele Beitrittsversuche – bitte kurz warten' });
+      if (spiel.spieler.size >= MAX_SPIELER) return cb({ fehler: `Das Spiel ist voll (höchstens ${MAX_SPIELER} Teilnehmer)` });
       name = String(name || '').replace(/\s+/g, ' ').trim();
       if (!name) return cb({ fehler: 'Bitte einen Namen eingeben' });
       if (name.length > MAX_NAME) return cb({ fehler: `Name darf höchstens ${MAX_NAME} Zeichen haben` });

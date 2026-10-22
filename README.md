@@ -241,7 +241,14 @@ Details zur Architektur stehen in [`ARCHITEKTUR.md`](ARCHITEKTUR.md).
 
 QuizMaster FW ist für ein **vertrauenswürdiges lokales Netz** gedacht: Es gibt kein HTTPS und nur eine gemeinsame Admin-PIN. Den Server **nicht ins Internet freigeben**.
 
-Nach 10 falschen Admin-PINs wird das betreffende Gerät für 5 Minuten gesperrt, damit die PIN nicht durchprobiert werden kann. Solange noch die Standard-PIN `112112` eingestellt ist, weist die Verwaltung nach jeder Anmeldung darauf hin.
+Eingebaute Schutzmaßnahmen:
+- Nach 10 falschen Admin-PINs wird das betreffende Gerät für 5 Minuten gesperrt, damit die PIN nicht durchprobiert werden kann. Solange noch die Standard-PIN `112112` eingestellt ist, öffnet die Verwaltung nach der Anmeldung den Dialog zum Ändern.
+- Höchstens 500 Teilnehmende pro Spiel und höchstens 20 Beitritte pro Gerät und Minute – ein einzelnes Gerät im WLAN kann ein Spiel nicht mit Fantasie-Teilnehmern fluten.
+- Der Excel-Export der Ergebnisse entschärft Namen, die wie Excel-Formeln aussehen (z. B. `=…`), durch ein vorangestelltes Apostroph.
+- Quiz-Pakete werden beim Import höchstens bis 1 GB entpackt; manipulierte ZIP-Dateien („ZIP-Bomben“) werden abgelehnt.
+- Hochgeladene Dateien werden am Inhalt erkannt (nur Bilder und Videos), der Server setzt Sicherheits-Header und gibt bei Fehlern keine internen Details preis.
+
+Die mitgelieferte Node.js-Laufzeit sollte aktuell sein – bei neuen [Node.js-Sicherheitsupdates](https://nodejs.org/en/blog/vulnerability) die MSI mit der neuen Version bauen.
 
 Alle Daten bleiben auf dem Server-Rechner. Gespeichert werden die eingegebenen Namen, Antworten und Punkte jedes Spiels – Teilnehmende sollten wissen, dass ihre Ergebnisse für die Auswertung gespeichert werden. Ergebnisse lassen sich in der Verwaltung einzeln löschen.
 

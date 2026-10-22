@@ -42,6 +42,7 @@ test('ZIP: Schreiben und Lesen, auch mit Umlauten im Namen und deflate', () => {
   const zentral = z.indexOf(Buffer.from([0x50, 0x4b, 0x01, 0x02]));
   z.writeUInt16LE(8, zentral + 10);
   z.writeUInt32LE(zlib.crc32(roh), zentral + 16);
+  z.writeUInt32LE(roh.length, zentral + 24); // entpackte Größe
   assert.strictEqual(paket.leseZip(z).get('x.txt').toString(), roh.toString());
 
   assert.throws(() => paket.leseZip(Buffer.from('kein zip')), /ZIP/);
@@ -92,4 +93,26 @@ test('JSON-Import: Verweise auf nicht vorhandene Medien werden entfernt, YouTube
   assert.strictEqual(q.fragen[0].info.elemente[1].src, null);
   assert.strictEqual(q.fragen[1].info.elemente.length, 0);
   assert.strictEqual(hinweise.length, 2);
+});
+
+// Baut ein ZIP mit einem deflate-Eintrag; angegebeneGroesse = Größe laut ZIP-Verzeichnis
+function deflateZip(roh, angegebeneGroesse) {
+  const z = paket.erstelleZip([{ name: 'x.bin', daten: zlib.deflateRawSync(roh) }]);
+  z.writeUInt16LE(8, 8);
+  const zentral = z.indexOf(Buffer.from([0x50, 0x4b, 0x01, 0x02]));
+  z.writeUInt16LE(8, zentral + 10);
+  z.writeUInt32LE(zlib.crc32(roh), zentral + 16);
+  z.writeUInt32LE(angegebeneGroesse, zentral + 24);
+  return z;
+}
+
+test('ZIP-Bombe: mehr entpacken als angegeben wird abgelehnt', () => {
+  const roh = Buffer.alloc(5 * 1024 * 1024); // 5 MB Nullen, gepackt nur wenige KB
+  assert.throws(() => paket.leseZip(deflateZip(roh, 1000)), /größer als angegeben/);
+});
+
+test('ZIP-Bombe: zu große Gesamtgröße wird vor dem Entpacken abgelehnt', () => {
+  const roh = Buffer.alloc(1024);
+  assert.throws(() => paket.leseZip(deflateZip(roh, 1024), { maxEntpackt: 512 }), /zu groß/);
+  assert.strictEqual(paket.leseZip(deflateZip(roh, 1024), { maxEntpackt: 2048 }).get('x.bin').length, 1024);
 });

@@ -71,9 +71,17 @@ function csvFeld(wert, delimiter = ';') {
   return /["\r\n]/.test(s) || s.includes(delimiter) ? '"' + s.replace(/"/g, '""') + '"' : s;
 }
 
-function toCsv(rows) {
+// Schutz vor Formel-Einschleusung: Texte, die Excel als Formel deuten würde (=, +, -, @, Tab, CR),
+// bekommen ein führendes Apostroph. Zahlen bleiben Zahlen.
+function ohneFormel(wert) {
+  if (typeof wert !== 'string') return wert;
+  return /^[=+\-@\t\r]/.test(wert) ? "'" + wert : wert;
+}
+
+function toCsv(rows, { formelSchutz = false } = {}) {
   // BOM, damit Excel UTF-8 (Umlaute) korrekt erkennt
-  return '﻿' + rows.map(r => r.map(f => csvFeld(f)).join(';')).join('\r\n') + '\r\n';
+  const zelle = f => csvFeld(formelSchutz ? ohneFormel(f) : f);
+  return '﻿' + rows.map(r => r.map(zelle).join(';')).join('\r\n') + '\r\n';
 }
 
 // ---------- Validierung ----------
@@ -343,7 +351,8 @@ function exportResultCsv(result) {
     const r = result.spieler.filter(s => s.antworten[q] && s.antworten[q].richtig).length;
     rows.push([`F${q + 1}: ${f.frage}`, f.antworten[f.richtig], n ? Math.round(100 * r / n) : 0]);
   });
-  return toCsv(rows);
+  // Teilnehmernamen sind ohne Anmeldung frei wählbar → Formel-Schutz für Excel
+  return toCsv(rows, { formelSchutz: true });
 }
 
 module.exports = {

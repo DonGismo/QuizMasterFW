@@ -56,6 +56,15 @@ npm run msi                                    # Windows-Installer bauen
 - Ersatzweise startet `QuizMaster FW starten.cmd` mit Konsolenfenster; es setzt `QMFW_DATA_DIR`/`QMFW_CONFIG` auf `%LOCALAPPDATA%\QuizMasterFW` und `QMFW_BROWSER=1`. `server/index.js` kopiert die Standard-`config.json` beim ersten Start dorthin.
 - Icon und Installer-Bilder erzeugt `installer/grafiken.js`.
 
+## Sicherheit
+
+- **Admin-PIN:** zeitkonstanter Vergleich, Sperre nach 10 Fehlversuchen je Adresse für 5 Minuten (`pruefePin` in `index.js`; gilt für Anmeldung, Verwaltungs-API, PIN-Wechsel und `host:erstellen`).
+- **Beitritt:** `MAX_SPIELER` (500) pro Spiel und `MAX_BEITRITTE` (20 pro Minute) je Adresse in `game.js`; Anfragen vom Rechner selbst (127.0.0.1/::1) sind von der Bremse ausgenommen, damit der Lasttest funktioniert.
+- **Excel-Export der Ergebnisse:** `toCsv(…, { formelSchutz: true })` stellt Texten, die mit `=`, `+`, `-`, `@`, Tab oder CR beginnen, ein Apostroph voran (Teilnehmernamen sind ohne Anmeldung frei wählbar).
+- **Quiz-Pakete:** `leseZip` prüft die Summe der entpackten Größen (`MAX_ENTPACKT`, 1 GB) vor dem Entpacken, entpackt nie mehr als im ZIP-Verzeichnis angegeben (`maxOutputLength`) und begrenzt die Anzahl der Einträge.
+- **HTTP:** `X-Powered-By` ist abgeschaltet; `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN` und `Content-Security-Policy: frame-ancestors 'self'` für alle Antworten. Serverfehler (5xx) gehen nur ins Protokoll, der Browser bekommt eine allgemeine Meldung.
+- **Node.js-Laufzeit:** Die MSI enthält die `node.exe` des Build-Rechners – vor jedem Release auf den aktuellen Sicherheitsstand bringen.
+
 ## Konventionen
 
 - Design-Werte (Feuerwehr-Rot/Weiß, Antwortfarben `--a0` … `--a3` mit Symbolen ▲◆●■) stehen in `public/css/style.css`. Antwortfelder immer mit Farbe **und** Symbol – wegen Farbschwäche.

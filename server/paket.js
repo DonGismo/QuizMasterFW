@@ -66,21 +66,30 @@ function erstelleZip(dateien) {
   return Buffer.concat([...lokal, ...zentral, ende]);
 }
 
-// ZIP-Buffer → Map(name → Buffer). Wirft bei kaputten oder nicht unterstützten Dateien.
-function leseZip(buf) {
+// Schutz vor „ZIP-Bomben“: so viel darf ein Paket entpackt höchstens ergeben
+const MAX_ENTPACKT = 1024 * 1024 * 1024; // 1 GB
+const MAX_EINTRAEGE = 5000;
+
+// ZIP-Buffer → Map(name → Buffer). Wirft bei kaputten, nicht unterstützten oder zu großen Dateien.
+function leseZip(buf, { maxEntpackt = MAX_ENTPACKT } = {}) {
   let ende = -1;
   for (let i = buf.length - 22; i >= Math.max(0, buf.length - 22 - 65535); i--) {
     if (buf.readUInt32LE(i) === 0x06054b50) { ende = i; break; }
   }
   if (ende < 0) throw new Error('Keine gültige ZIP-Datei');
   const anzahl = buf.readUInt16LE(ende + 10);
+  if (anzahl > MAX_EINTRAEGE) throw new Error(`Das Paket enthält zu viele Dateien (${anzahl})`);
   let p = buf.readUInt32LE(ende + 16);
   const dateien = new Map();
+  let summe = 0;
   for (let i = 0; i < anzahl; i++) {
     if (p + 46 > buf.length || buf.readUInt32LE(p) !== 0x02014b50) throw new Error('ZIP-Verzeichnis beschädigt');
     const methode = buf.readUInt16LE(p + 10);
     const crc = buf.readUInt32LE(p + 16);
     const gepackt = buf.readUInt32LE(p + 20);
+    const ungepackt = buf.readUInt32LE(p + 24);
+    summe += ungepackt;
+    if (summe > maxEntpackt) throw new Error(`Das Paket ist entpackt zu groß (mehr als ${Math.round(maxEntpackt / 1048576)} MB)`);
     const nl = buf.readUInt16LE(p + 28), el = buf.readUInt16LE(p + 30), kl = buf.readUInt16LE(p + 32);
     const lokalOffset = buf.readUInt32LE(p + 42);
     const name = buf.subarray(p + 46, p + 46 + nl).toString('utf8').replace(/\\/g, '/');
@@ -91,8 +100,15 @@ function leseZip(buf) {
     const roh = buf.subarray(start, start + gepackt);
     let daten;
     if (methode === 0) daten = roh;
-    else if (methode === 8) daten = zlib.inflateRawSync(roh);
-    else throw new Error(`Komprimierungsart ${methode} wird nicht unterstützt (${name})`);
+    else if (methode === 8) {
+      // Nie mehr entpacken als im Verzeichnis angegeben – sonst könnte eine kleine Datei den Speicher füllen
+      try {
+        daten = zlib.inflateRawSync(roh, { maxOutputLength: Math.max(ungepackt, 1) });
+      } catch {
+        throw new Error('Eintrag lässt sich nicht entpacken oder ist größer als angegeben: ' + name);
+      }
+    } else throw new Error(`Komprimierungsart ${methode} wird nicht unterstützt (${name})`);
+    if (daten.length !== ungepackt) throw new Error('Größe stimmt nicht – Datei beschädigt: ' + name);
     if (zlib.crc32(daten) !== crc) throw new Error('Prüfsumme falsch – Datei beschädigt: ' + name);
     dateien.set(name, daten);
   }

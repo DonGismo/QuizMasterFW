@@ -92,3 +92,16 @@ test('Info-Seite: fremde Dateipfade, falsche YouTube-IDs und Typen werden abgele
   assert.match(mit({ typ: 'text', text: 'x', w: 500 }).join(), /Größe/);
   assert.deepStrictEqual(imp.validateFrage(basis), []); // ohne Info-Seite weiterhin gültig
 });
+
+test('Ergebnis-Export: Teilnehmernamen können keine Excel-Formeln einschleusen', () => {
+  const csv = imp.exportResultCsv({
+    quizTitel: 'T', beendet: new Date().toISOString(),
+    fragen: [{ frage: '=F1', antworten: ['a', 'b'], richtig: 0 }],
+    spieler: ['=cmd|\' /C calc\'!A0', '+1', '-2', '@SUMME(A1)', 'Anna'].map(name => ({ name, punkte: 0, antworten: [{ index: 0, richtig: true, punkte: 0 }] })),
+  });
+  const zellen = csv.split('\r\n').flatMap(z => z.split(';'));
+  assert.ok(!zellen.some(z => /^[=+\-@]/.test(z.replace(/^"/, ''))), 'keine Zelle darf mit = + - @ beginnen');
+  assert.ok(csv.includes("'=cmd|' /C calc'!A0") || csv.includes("\"'=cmd|' /C calc'!A0\""));
+  assert.ok(csv.includes(';Anna;'));
+  assert.ok(/;0;1;1;100;/.test(csv)); // Zahlen bleiben Zahlen
+});

@@ -99,6 +99,15 @@ const SPERR_TEXT = `Zu viele Fehlversuche – bitte in ${SPERRE_MS / 60000} Minu
 // ---------- Express ----------
 
 const app = express();
+app.disable('x-powered-by'); // nicht verraten, welche Software läuft
+// Sicherheits-Header: Dateitypen nicht erraten lassen (wichtig für hochgeladene Medien),
+// Seiten nicht in fremde Webseiten einbetten lassen (Schutz der Verwaltung vor Klick-Fallen)
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('Content-Security-Policy', "frame-ancestors 'self'");
+  next();
+});
 app.use(express.json({ limit: '5mb' }));
 // no-cache: Browser fragt immer nach (304 wenn unverändert) – nach Updates gibt es keine veralteten Skripte
 app.use(express.static(path.join(__dirname, '..', 'public'), { setHeaders: res => res.setHeader('Cache-Control', 'no-cache') }));
@@ -283,7 +292,13 @@ app.use('/api', admin);
 // Fehler (z. B. zu große Datei) als JSON melden, damit die Oberfläche sie anzeigen kann
 app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   const zuGross = err.type === 'entity.too.large';
-  res.status(err.status || 500).json({ fehler: zuGross ? `Datei zu groß (max. ${req.path.endsWith('/paket') ? PAKET_LIMIT_MB : config.maxUploadMB} MB)` : 'Serverfehler: ' + err.message });
+  const status = err.status || err.statusCode || 500;
+  // Interne Fehlermeldungen nur ins Protokoll, nicht an den Browser
+  if (status >= 500) console.error('   Serverfehler bei ' + req.method + ' ' + req.path + ': ' + (err.stack || err.message));
+  const text = zuGross ? `Datei zu groß (max. ${req.path.endsWith('/paket') ? PAKET_LIMIT_MB : config.maxUploadMB} MB)`
+    : status >= 500 ? 'Serverfehler – Details stehen im Server-Protokoll'
+      : 'Ungültige Anfrage';
+  res.status(status).json({ fehler: text });
 });
 
 // ---------- Start ----------
